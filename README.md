@@ -1,2 +1,2 @@
 # Web-development
-Actividad de desarrollo web (IX semestre).
+Actividad de desarrollo web (CRUD en PHP).
