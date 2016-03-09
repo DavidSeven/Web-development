@@ -146,7 +146,7 @@ header h1
 
 .button-container, .button-container div
 {
-  height: 50px;
+  height: 40px;
 }
 
 #project-2
@@ -155,19 +155,30 @@ header h1
   height: 200px;
 }
 
+#authors-label
+{
+  padding-top: 5px;
+}
+
 .div-select
 {
-  height: 200px;
+  height: 100px;
   width: 100%;
-  transform: translate(8%, 0%);
+  transform: translate(3%, 0%);
 }
 
 .form-label
 {
-  transform: translate(8%, 0%);
+  transform: translate(3%, 0%);
 }
 
 .move-select
 {
-  transform: translate(8%, 0%);
+  transform: translate(3%, 0%);
+}
+
+.panel-color
+{
+  background-color: rgb(55, 55, 55);
+  border-radius: 7px;
 }

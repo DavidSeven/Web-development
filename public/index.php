@@ -7,6 +7,9 @@
   <head>
     <?php
       head ('undefined', 'index');
+      javascript ('index');
+      indexAnimation ();
+      loader ();
     ?>
   </head>
   <body>
@@ -47,9 +50,5 @@
         </section>
       </section>
     </div>
-    <?php
-      javascript ('index');
-      indexAnimation ();
-    ?>
   </body>
 </html>

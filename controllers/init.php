@@ -62,7 +62,24 @@
         </div>
       </div>
     </div>
-    <script src = "../public/js/loader.js"></script>
     <?php
+      if (getUrl () != '/degree_works/public/index.php')
+      {
+        ?>
+          <script src = "../public/js/loader.js"></script>
+        <?php
+      }
+      else
+      {
+          ?>
+          <script src = "js/loader.js"></script>
+          <?php
+      }
+  }
+
+  function getUrl ()
+  {
+    $url = $_SERVER ['REQUEST_URI'];
+    return $url;
   }
 ?>

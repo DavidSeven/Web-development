@@ -6,11 +6,31 @@ $(document).ready
     (
       function (event)
       {
-        event.preventDefault ();
-
         if ($("select[name=authors] option:selected").length <= 3 && $("select[name=authors] option:selected").length >= 1 && $("select[name=advisers]").val () != 0)
         {
-
+          $.ajax
+          ({
+            type: "post",
+            url: "../controllers/add-project.php",
+            data: $("form[name=add-project-form]").serialize (),
+            encode: true,
+            success: function (data)
+            {
+              console.log ("Package sent");
+              $("form[name=add-project-form]") [0].reset ();
+              $(".container").slideUp
+              (
+                700, function ()
+                {
+                  window.location.href = "../public/index.php";
+                }
+              );
+            },
+            error: function (data)
+            {
+              console.log ("Package don't sent");
+            }
+          });
         }
         else
         {
@@ -31,9 +51,10 @@ $(document).ready
               }
             }
         }
+
+        event.preventDefault ();
       }
     );
-
 
     $("input[name=back-2]").click
     (

@@ -19,7 +19,7 @@
     </header
     <div class = "container">
       <div class = "main row">
-        <div class = "col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3 container-fluid">
+        <div class = "col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3 container-fluid panel-color">
           <form name = "add-project-form">
             <table class = "table" id = "project-1">
               <tr>
@@ -66,7 +66,7 @@
             </table>
             <div class = "container" id = "project-2">
               <div class = "main row">
-                <div class = "col-xs-12 col-sm-12 col-md-12 col-lg-12 form-label">
+                <div class = "col-xs-12 col-sm-12 col-md-12 col-lg-12 form-label" id = "authors-label">
                   <label>Authors (multiselection [Ctrl + click]):</label>
                 </div>
                 <div class = "col-xs-12 col-sm-12 col-md-12 col-lg-12 div-select">
