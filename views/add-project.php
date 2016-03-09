@@ -1,5 +1,6 @@
 <?php
   require ('../controllers/init.php');
+  require ('../controllers/author-crud.php')
 ?>
 
 <!DOCTYPE HTML>
@@ -71,14 +72,22 @@
                 </div>
                 <div class = "col-xs-12 col-sm-12 col-md-12 col-lg-12 div-select">
                   <select class = "form-control" multiple = "multiple" name = "authors">
-                    <option value = "1">Value 1</option>
+                    <?php
+                      $authorsObjectArray = read ();
+                      $size = sizeof ($authorsObjectArray);
+                      for ($i = 0; $i < $size; $i ++)
+                      {
+                        echo '<option value = "'.$authorsObjectArray [$i]->getIdentifier ().'">'.$authorsObjectArray [$i]->getName ().' '.$authorsObjectArray [$i]->getLastName ().'</option>';
+                      }
+                    ?>
+                    <!--<option value = "1">Value 1</option>
                     <option value = "2">Value 2</option>
                     <option value = "3">Value 3</option>
                     <option value = "3">Value 4</option>
-                    <option value = "3">Value 5</option>
+                    <option value = "3">Value 5</option>-->
                   </select>
                 </div>
-                <div class = "col-xs-12 col-sm-12 col-md-12 col-lg-12 form-label">
+                <div class = "col-xs-12 col-sm-12 col-md-12 col-lg-12 form-label" id = "advisers-label">
                   <label>Adviser:</label>
                 </div>
                 <div class = "col-xs-12 col-sm-12 col-md-12 col-lg-12 move-select">
@@ -89,9 +98,7 @@
                     <option value = "3">Value 3</option>
                   </select>
                   <div class = "col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <div class = "container button-container">
-                      <div class = "row">
-                      </div>
+                    <div class = "container button-container" id = "button-container-2">
                       <div class = "main row">
                         <div class = "col-xs-6 col-sm-6 col-md-6 col-lg-6">
                           <input class = "btn btn-lg btn-success button-width center-block" type = "submit" value = "Save" name = "accept-2">

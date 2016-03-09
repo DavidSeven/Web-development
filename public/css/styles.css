@@ -157,7 +157,7 @@ header h1
 
 #authors-label
 {
-  padding-top: 5px;
+  margin-top: 40px;
 }
 
 .div-select
@@ -181,4 +181,15 @@ header h1
 {
   background-color: rgb(55, 55, 55);
   border-radius: 7px;
+  height: 400px;
+}
+
+#advisers-label
+{
+  margin-top: 20px;
+}
+
+#button-container-2
+{
+  margin-top: 40px;
 }

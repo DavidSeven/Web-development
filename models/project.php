@@ -18,6 +18,14 @@
       $this->quota = $quota;
     }
 
+    public function Adviser ($name, $investigationLine, $calification, $addedDate)
+    {
+      $this->name = $name;
+      $this->investigationLine = $investigationLine;
+      $this->calification = $calification;
+      $this->addedDate = $addedDate;
+    }
+
     public function setIdentifier ($identifier)
     {
       $this->identifier = $identifier;
