@@ -2,15 +2,18 @@ body
 {
   font-family: monospace;
   width: 98%;
-  background-color: rgb(26, 29, 32);
+  background-color: #1a1d20;
+  color: #fff;
 }
 
 header
 {
-	background: #2c3e50;
+	background: #1a1d20;
 	color: #fff;
   width: 102%;
   padding: 13%;
+  webkit-transition: background-color 4s;
+  transition: background-color 4s;
 }
 
 header h1
@@ -19,6 +22,7 @@ header h1
   padding: 40px;
   text-align: center;
   padding-top: 20px;
+  display: none;
 }
 
 .main
@@ -41,12 +45,129 @@ header h1
   transform: translate(5%, -50%);
   text-align: center;
   vertical-align: center;
-  box-shadow: 0px 0px 2px #888888;
+  box-shadow: 0px 0px 3px #888888;
 }
 
 .circle img
 {
   width: 50%;
   padding: 2%;
-  margin-top: 25%;
+  margin-top: 30%;
+}
+
+#link-to-create
+{
+  webkit-transition: transform 1s;
+  transition: transform 1s;
+  display: none;
+}
+
+#link-to-create:hover
+{
+  transform: scale(1, 1);
+  transform: rotate(-20deg);
+}
+
+#link-to-read
+{
+  webkit-transition: transform 1s;
+  transition: transform 1s;
+  display: none;
+}
+
+#link-to-read:hover
+{
+  transform: scale(1);
+  transform: rotate(-5deg);
+}
+
+#link-to-update
+{
+  webkit-transition: transform 1s;
+  transition: transform 1s;
+  display: none;
+}
+
+#link-to-update:hover
+{
+  transform: scale(1);
+  transform: rotate(5deg);
+}
+
+#link-to-delete
+{
+  webkit-transition: transform 1s;
+  transition: transform 1s;
+  display: none;
+}
+
+#link-to-delete:hover
+{
+  transform: scale(1);
+  transform: rotate(20deg);
+}
+
+#pre-loader
+{
+  position: fixed;
+  top:0; left:0;
+  right:0; bottom:0;
+  background: white;
+  z-index: 100;
+}
+
+#loader
+{
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  left:35%; top:30%;
+  background: white no-repeat center 0;
+  /*margin:-50px 0 0 -50px;*/
+}
+
+#h2-title
+{
+  text-align: center;
+}
+
+#form-header
+{
+  background: #1a1d20;
+  color: #fff;
+  width: 102%;
+  padding: 3%;
+}
+
+.button-width
+{
+  width: 140px;
+}
+
+.button-container, .button-container div
+{
+  height: 50px;
+}
+
+#project-2
+{
+  display: none;
+  height: 200px;
+}
+
+.div-select
+{
+  height: 200px;
+  width: 100%;
+  transform: translate(8%, 0%);
+}
+
+.form-label
+{
+  transform: translate(8%, 0%);
+}
+
+.move-select
+{
+  transform: translate(8%, 0%);
 }
