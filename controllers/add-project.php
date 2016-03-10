@@ -15,14 +15,9 @@
     $authors [$i] = $selectedItem;
   }
 
-  if ($addedDate == null)
-  {
-    $addedDate = null;
-  }
-
   if ($calification == null)
   {
-    $calification = null;
+    $calification = 0;
   }
 
   createProject ($name, $investigationLine, $calification, $addedDate, $adviserIdentifier);
