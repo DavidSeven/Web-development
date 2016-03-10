@@ -1,5 +1,5 @@
 <?php
-  require ('../models/database.php');
+  require_once ('../models/database.php');
   require ('../models/project.php');
 
   $databaseObject = new Database ();

@@ -11,7 +11,7 @@
   {
     $databaseObject = new Database ();
     $connection = $databaseObject->connect ();
-    $query = $connection->prepare ('CALL SPGetAllAdvisers ();');
+    $query = $connection->prepare ('CALL spGetAllAdvisers ()');
     $query->execute ();
     $result = $query->fetchAll ();
     $i = 0;

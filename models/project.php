@@ -58,32 +58,32 @@
 
     public function getIdentifier ()
     {
-      return $identifier;
+      return $this->identifier;
     }
 
     public function getName ()
     {
-      return $name;
+      return $this->name;
     }
 
     public function getInvestigationLine ()
     {
-      return $investigationLine;
+      return $this->investigationLine;
     }
 
     public function getCalification ()
     {
-      return $calification;
+      return $this->calification;
     }
 
     public function getAddedDate ()
     {
-      return $addedDate;
+      return $this->addedDate;
     }
 
     public function getQuota ()
     {
-      return $quota;
+      return $this->quota;
     }
   }
 ?>
