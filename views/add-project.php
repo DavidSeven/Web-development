@@ -1,6 +1,7 @@
 <?php
   require ('../controllers/init.php');
-  require ('../controllers/author-crud.php')
+  require ('../controllers/author-crud.php');
+  require ('../controllers/adviser-crud.php');
 ?>
 
 <!DOCTYPE HTML>
@@ -73,18 +74,13 @@
                 <div class = "col-xs-12 col-sm-12 col-md-12 col-lg-12 div-select">
                   <select class = "form-control" multiple = "multiple" name = "authors">
                     <?php
-                      $authorsObjectArray = read ();
+                      $authorsObjectArray = readAuthor ();
                       $size = sizeof ($authorsObjectArray);
                       for ($i = 0; $i < $size; $i ++)
                       {
                         echo '<option value = "'.$authorsObjectArray [$i]->getIdentifier ().'">'.$authorsObjectArray [$i]->getName ().' '.$authorsObjectArray [$i]->getLastName ().'</option>';
                       }
                     ?>
-                    <!--<option value = "1">Value 1</option>
-                    <option value = "2">Value 2</option>
-                    <option value = "3">Value 3</option>
-                    <option value = "3">Value 4</option>
-                    <option value = "3">Value 5</option>-->
                   </select>
                 </div>
                 <div class = "col-xs-12 col-sm-12 col-md-12 col-lg-12 form-label" id = "advisers-label">
@@ -92,10 +88,15 @@
                 </div>
                 <div class = "col-xs-12 col-sm-12 col-md-12 col-lg-12 move-select">
                   <select class = "form-control" name = "advisers">
-                    <option value = "0" selected>Choose adviser</option>
-                    <option value = "1">Value 1</option>
-                    <option value = "2">Value 2</option>
-                    <option value = "3">Value 3</option>
+                    <option value = "0">Choose an adviser</option>
+                    <?php
+                      $advisersObjectArray = readAdviser ();
+                      $size = sizeof ($advisersObjectArray);
+                      for ($i = 0; $i < $size; $i ++)
+                      {
+                        echo '<option value = "'.$advisersObjectArray [$i]->getIdentifier ().'">'.$advisersObjectArray [$i]->getName ().' '.$advisersObjectArray [$i]->getLastName ().'</option>';
+                      }
+                    ?>
                   </select>
                   <div class = "col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <div class = "container button-container" id = "button-container-2">

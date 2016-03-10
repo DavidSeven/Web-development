@@ -29,17 +29,17 @@
 
     public function getIdentifier ()
     {
-      return $identifier;
+      return $this->identifier;
     }
 
     public function getName ()
     {
-      return $name;
+      return $this->name;
     }
 
     public function getLastName ()
     {
-      return $lastName;
+      return $this->lastName;
     }
   }
 ?>

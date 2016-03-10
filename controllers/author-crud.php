@@ -1,21 +1,21 @@
 <?php
-  require ('../models/database.php');
+  require_once ('../models/database.php');
   require ('../models/author.php');
 
-  $databaseObject = new Database ();
-  $databaseObject->connect ();
-
-  function create ($identifier, $name, $lastName)
+  function createAuthor ($identifier, $name, $lastName)
   {
     $authorsObjectArray = new Author ($identifier, $name, $lastName);
   }
 
-  function read ()
+  function readAuthor ()
   {
-    $query->$databaseObject->prepare ('CALL spGetAllAuthors ()');
+    $databaseObject = new Database ();
+    $connection = $databaseObject->connect ();
+    $query = $connection->prepare ('CALL SPGetAllAuthors ();');
     $query->execute ();
-    $result->fetchAll ();
+    $result = $query->fetchAll ();
     $i = 0;
+    $authorsObjectArray = null;
 
     foreach ($result as $key => $value)
     {
@@ -23,15 +23,18 @@
       $i ++;
     }
 
+    $query->closeCursor ();
+    $connection = null;
+    $databaseObject = null;
     return $authorsObjectArray;
   }
 
-  function update ()
+  function updateAuthor ()
   {
 
   }
 
-  function delete ()
+  function deleteAuthor ()
   {
 
   }

@@ -1,5 +1,5 @@
 <?php
-  require_once ('../configuration.php');
+  require ('../configuration.php');
 
   class Database extends PDO
   {
@@ -12,16 +12,11 @@
 
     public function Database ()
     {
-      /*$type = $type_db;
-      $user = $user_db;
-      $password = $password_db;
-      $name = $name_db;
-      $host = $host_db;*/
-      $type = 'mysql';
-      $user = 'root';
-      $password = '';
-      $name = 'degree_works';
-      $host = 'localhost';
+      $this->type = $GLOBALS ['type_db'];
+      $this->user = $GLOBALS ['user_db'];
+      $this->password = $GLOBALS ['password_db'];
+      $this->name = $GLOBALS ['name_db'];
+      $this->host = $GLOBALS ['host_db'];
     }
 
     public function connect ()
