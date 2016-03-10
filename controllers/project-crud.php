@@ -2,36 +2,56 @@
   require_once ('../models/database.php');
   require ('../models/project.php');
 
-  $databaseObject = new Database ();
-  $databaseObject->connect ();
-
-  function create ($name, $investigationLine, $calification, $addedDate)
+  function createProject ($name, $investigationLine, $calification, $addedDate, $adviserIdentifier)
   {
-    $projectObject = new Project ($name, $investigationLine, $calification, $addedDate);
+    $databaseObject = new Database ();
+    $connection = $databaseObject->connect ();
+    $projectObject = new Project ($name, $investigationLine, $calification, $addedDate, $adviserIdentifier);
+
+    $query = $connection->prepare
+    (
+      "CALL spSetProject
+      (
+        '$projectObject->getName ()', '$projectObject->getInvestigationLine ()', '$projectObject->getCalification ()', '$projectObject->getAddedDate ()',
+        '$projectObject->getAdviserIdentifier ()'
+      )"
+    );
+    
+    $query->execute ();
+    $result = $query->fetchAll ();
+    $query->closeCursor ();
+    $connection = null;
+    $databaseObject = null;
   }
 
-  function read ()
+  function readProject ()
   {
-    $query->$databaseObject->prepare ('CALL spGetAllProjects ()');
+    $databaseObject = new Database ();
+    $connection = $databaseObject->connect ();
+    $query = $connection->prepare ('CALL spGetAllAuthors ()');
     $query->execute ();
-    $result->fetchAll ();
+    $result = $query->fetchAll ();
     $i = 0;
+    $authorsObjectArray = null;
 
     foreach ($result as $key => $value)
     {
-      $projectsObjectArray [$i] = new Project ($value ['identifier'], $value ['name'], $value ['investigationLine'], $value ['calification'], $value ['addedDate'], $value ['quota']);
+      $authorsObjectArray [$i] = new Author ($value ['identifier'], $value ['name'], $value ['lastName']);
       $i ++;
     }
 
-    return $projectsObjectArray;
+    $query->closeCursor ();
+    $connection = null;
+    $databaseObject = null;
+    return $authorsObjectArray;
   }
 
-  function update ()
+  function updateAuthor ()
   {
 
   }
 
-  function delete ()
+  function deleteAuthor ()
   {
 
   }

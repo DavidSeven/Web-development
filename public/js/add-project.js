@@ -2,7 +2,7 @@ $(document).ready
 (
   function ()
   {
-    $("form[name=add-project-form]").submit
+  /*  $("form[name=add-project-form]").submit
     (
       function (event)
       {
@@ -54,7 +54,7 @@ $(document).ready
 
         event.preventDefault ();
       }
-    );
+    );*/
 
     $("input[name=back-2]").click
     (

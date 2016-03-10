@@ -7,8 +7,9 @@
     private $calification;
     private $addedDate;
     private $quota;
+    private $adviserIdentifier;
 
-    public function Adviser ($identifier, $name, $investigationLine, $calification, $addedDate, $quota)
+    public function Project ($identifier, $name, $investigationLine, $calification, $addedDate, $quota, $adviserIdentifier)
     {
       $this->identifier = $identifier;
       $this->name = $name;
@@ -16,14 +17,16 @@
       $this->calification = $calification;
       $this->addedDate = $addedDate;
       $this->quota = $quota;
+      $this->adviserIdentifier = $adviserIdentifier;
     }
 
-    public function Adviser ($name, $investigationLine, $calification, $addedDate)
+    public function Project ($name, $investigationLine, $calification, $addedDate, $adviserIdentifier)
     {
       $this->name = $name;
       $this->investigationLine = $investigationLine;
       $this->calification = $calification;
       $this->addedDate = $addedDate;
+      $this->adviserIdentifier = $adviserIdentifier;
     }
 
     public function setIdentifier ($identifier)
@@ -56,6 +59,11 @@
       $this->quota = $quota;
     }
 
+    public function setAdviserIdentifier ($adviserIdentifier)
+    {
+      $this->adviserIdentifier = $adviserIdentifier;
+    }
+
     public function getIdentifier ()
     {
       return $this->identifier;
@@ -84,6 +92,11 @@
     public function getQuota ()
     {
       return $this->quota;
+    }
+
+    public function getAdviserIdentifier ()
+    {
+      return $this->adviserIdentifier;
     }
   }
 ?>
