@@ -22,7 +22,7 @@
     <div class = "container">
       <div class = "main row">
         <div class = "col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3 container-fluid panel-color">
-          <form name = "add-project-form" action = "../controllers/add-project.php" method = "post">
+          <form name = "add-project-form">
             <table class = "table" id = "project-1">
               <tr>
         	       <td colspan = "2">Register project</td>
@@ -36,7 +36,7 @@
     	        <tr>
     	           <td align = "left">Date:</td>
     	           <td>
-                   <input class = "form-control" type = "date" name = "date" placeholder = "Added date"/>
+                   <input class = "form-control" type = "date" name = "addedDate" placeholder = "Added date"/>
                  </td>
     	        </tr>
     	        <tr>
@@ -72,7 +72,7 @@
                   <label>Authors (multiselection [Ctrl + click]):</label>
                 </div>
                 <div class = "col-xs-12 col-sm-12 col-md-12 col-lg-12 div-select">
-                  <select class = "form-control" multiple = "multiple" name = "authors[]" id = "authors">
+                  <select class = "form-control" multiple = "multiple" name = "authors" id = "authors">
                     <?php
                       $authorsObjectArray = readAuthor ();
                       $size = sizeof ($authorsObjectArray);

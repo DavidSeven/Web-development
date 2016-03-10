@@ -2,7 +2,7 @@ $(document).ready
 (
   function ()
   {
-  /*  $("form[name=add-project-form]").submit
+    $("form[name=add-project-form]").submit
     (
       function (event)
       {
@@ -20,7 +20,7 @@ $(document).ready
               $("form[name=add-project-form]") [0].reset ();
               $(".container").slideUp
               (
-                700, function ()
+                500, function ()
                 {
                   window.location.href = "../public/index.php";
                 }
@@ -54,7 +54,7 @@ $(document).ready
 
         event.preventDefault ();
       }
-    );*/
+    );
 
     $("input[name=back-2]").click
     (
@@ -62,9 +62,9 @@ $(document).ready
       {
         $("#project-2").fadeOut
         (
-          700, function ()
+          500, function ()
           {
-            $("#project-1").fadeIn (700);
+            $("#project-1").fadeIn (500);
           }
         );
       }
@@ -79,9 +79,9 @@ $(document).ready
         {
           $("#project-1").fadeOut
           (
-            700, function ()
+            500, function ()
             {
-              $("#project-2").fadeIn (700);
+              $("#project-2").fadeIn (500);
             }
           );
         }

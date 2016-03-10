@@ -2,7 +2,7 @@
   require ('project-crud.php');
 
   $name = $_POST ['name'];
-  $addedDate = $_POST ['date'];
+  $addedDate = $_POST ['addedDate'];
   $calification = $_POST ['calification'];
   $investigationLine = $_POST ['investigationLine'];
   $adviserIdentifier = $_POST ['advisers'];
