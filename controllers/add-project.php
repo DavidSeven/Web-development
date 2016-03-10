@@ -2,9 +2,10 @@
   require ('project-crud.php');
 
   $name = $_POST ['name'];
-  $date = $_POST ['date'];
+  $addedDate = $_POST ['date'];
   $calification = $_POST ['calification'];
   $investigationLine = $_POST ['investigationLine'];
+  $adviserIdentifier = $_POST ['advisers'];
   $authors = null;
   $i = 0;
 
@@ -12,6 +13,17 @@
   {
     $i ++;
     $authors [$i] = $selectedItem;
-    echo $authors [$i];
   }
+
+  if ($addedDate == null)
+  {
+    $addedDate = null;
+  }
+
+  if ($calification == null)
+  {
+    $calification = null;
+  }
+
+  createProject ($name, $investigationLine, $calification, $addedDate, $adviserIdentifier);
 ?>

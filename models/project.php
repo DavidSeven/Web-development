@@ -20,15 +20,6 @@
       $this->adviserIdentifier = $adviserIdentifier;
     }
 
-    public function Project ($name, $investigationLine, $calification, $addedDate, $adviserIdentifier)
-    {
-      $this->name = $name;
-      $this->investigationLine = $investigationLine;
-      $this->calification = $calification;
-      $this->addedDate = $addedDate;
-      $this->adviserIdentifier = $adviserIdentifier;
-    }
-
     public function setIdentifier ($identifier)
     {
       $this->identifier = $identifier;

@@ -6,19 +6,17 @@
   {
     $databaseObject = new Database ();
     $connection = $databaseObject->connect ();
-    $projectObject = new Project ($name, $investigationLine, $calification, $addedDate, $adviserIdentifier);
-
+    $projectObject = new Project ("", $name, $investigationLine, $calification, $addedDate, "", $adviserIdentifier);
     $query = $connection->prepare
     (
-      "CALL spSetProject
+      'CALL spSetProject
       (
-        '$projectObject->getName ()', '$projectObject->getInvestigationLine ()', '$projectObject->getCalification ()', '$projectObject->getAddedDate ()',
-        '$projectObject->getAdviserIdentifier ()'
-      )"
+        "'.$projectObject->getName ().'", "'.$projectObject->getInvestigationLine ().'", '.$projectObject->getCalification ().', "'.$projectObject->getAddedDate ().'",
+        '.$projectObject->getAdviserIdentifier ().'
+      )'
     );
-    
+
     $query->execute ();
-    $result = $query->fetchAll ();
     $query->closeCursor ();
     $connection = null;
     $databaseObject = null;
@@ -46,12 +44,12 @@
     return $authorsObjectArray;
   }
 
-  function updateAuthor ()
+  function updateProject ()
   {
 
   }
 
-  function deleteAuthor ()
+  function deleteProject ()
   {
 
   }

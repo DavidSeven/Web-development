@@ -72,7 +72,7 @@
                   <label>Authors (multiselection [Ctrl + click]):</label>
                 </div>
                 <div class = "col-xs-12 col-sm-12 col-md-12 col-lg-12 div-select">
-                  <select class = "form-control" multiple = "multiple" name = "authors[]">
+                  <select class = "form-control" multiple = "multiple" name = "authors[]" id = "authors">
                     <?php
                       $authorsObjectArray = readAuthor ();
                       $size = sizeof ($authorsObjectArray);
