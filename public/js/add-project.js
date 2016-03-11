@@ -40,7 +40,7 @@ $(document).ready
               alert ("Please, check this:\nMinimum: 1 authors\nMaximum: 3 authors\n");
               for(i = 0; i < 3; i ++)
               {
-                $("select[name=authors]").fadeTo ('slow', 0.1).fadeTo ('slow', 1.0);
+                $("#authorsSelect").fadeTo ('slow', 0.1).fadeTo ('slow', 1.0);
               }
             }
             if ($("select[name=advisers]").val () == 0)
