@@ -193,3 +193,18 @@ header h1
 {
   margin-top: 40px;
 }
+
+.filters-padding
+{
+  padding: 5px;
+}
+
+#button-main-div
+{
+  padding-bottom: 50px;
+}
+
+#filters-title, #filters, #button-filters
+{
+  display: none;
+}

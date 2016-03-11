@@ -21,8 +21,8 @@
     <div class = "container">
       <div class = "main row">
         <div class = "col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-1 col-lg-6 col-lg-offset-2 container-fluid">
-          <table class = "table">
-            <tr>
+          <table class = "table" id = "table-read">
+            <tr id = "table-titles">
         	    <td>Identifier</td>
               <td>Name</td>
               <td>Investigation line</td>
@@ -48,9 +48,9 @@
                       </tr>';
               }
             ?>
-            <tr>
+            <tr id = "open-filters">
               <td colspan = "7">
-                <div class = "col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class = "col-xs-12 col-sm-12 col-md-12 col-lg-12" id = "button-main-div">
                   <div class = "container button-container" id = "button-container-2">
                     <div class = "main row">
                       <div class = "col-xs-6 col-sm-6 col-md-6 col-lg-6">
@@ -64,9 +64,46 @@
                  </div>
                </td>
             </tr>
+            <tr id = "filters-title">
+              <td colspan = "7">Filters:</td>
+            </tr>
+            <tr id = "filters">
+              <td colspan = "7">
+                <div class = "container">
+                  <div class = "main row-fluid">
+                    <div class = "col-xs-12 col-sm-12 col-md-6 col-lg-6 filters-padding">
+                      <input class = "form-control center-block" type = "number" name = "identifier" placeholder = "Identifier"/>
+                    </div>
+                    <div class = "col-xs-12 col-sm-12 col-md-6 col-lg-6 filters-padding">
+                      <input class = "form-control center-block" type = "text" name = "name" placeholder = "Name"/>
+                    </div>
+                    <div class = "col-xs-12 col-sm-12 col-md-6 col-lg-6 filters-padding">
+                      <input class = "form-control center-block" type = "text" name = "investigationLine" placeholder = "Investigation line"/>
+                    </div>
+                  </div>
+                 </div>
+              </td>
+            </tr>
+            <tr id = "button-filters">
+              <td colspan = "7">
+                <div class = "col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                  <div class = "container button-container">
+                    <div class = "main row">
+                      <div class = "col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                        <input class = "btn btn-lg btn-success button-width center-block" type = "button" value = "Search" name = "search">
+                      </div>
+                      <div class = "col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                        <input class = "btn btn-lg btn-danger button-width center-block" type = "button" value = "Back" name = "back-to-table"/>
+                      </div>
+                    </div>
+                   </div>
+                 </div>
+               </td>
+            </tr>
           </table>
         </div>
       </div>
     </div>
+    <script src = "../public/js/read-project.js"></script>
   </body>
 </html>
