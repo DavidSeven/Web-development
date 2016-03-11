@@ -69,7 +69,7 @@
             </tr>
             <tr id = "filters">
               <td colspan = "7">
-                <form name = "filter-form">
+                <form name = "filter-form" action = "../controllers/read-specific-project.php" method = "post">
                   <div class = "container">
                     <div class = "main row-fluid">
                       <div class = "col-xs-12 col-sm-12 col-md-6 col-lg-4 filters-padding">
@@ -102,6 +102,7 @@
                       </div>
                     </div>
                    </div>
+                   <input class = "btn btn-lg btn-success button-width center-block" type = "submit" value = "Submit">
                 </form>
               </td>
             </tr>

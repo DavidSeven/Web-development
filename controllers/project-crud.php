@@ -78,13 +78,29 @@
     return $projectsObject;
   }
 
-  function updateProject ()
+  function readSimilarProjects ($sql)
   {
+    $databaseObject = new Database ();
+    $connection = $databaseObject->connect ();
+    $query = $connection->prepare ($sql);
+    $query->execute ();
+    $result = $query->fetchAll ();
+    $projectsObjectArray = null;
 
+    foreach ($result as $key => $value)
+    {
+      $projectsObjectArray = new Project ($value ['identifier'], $value ['name'], $value ['investigationLine'], $value ['calification'], $value ['addedDate'], $value ['quota'], $value ['adviserIdentifier']);
+    }
+
+    $query->closeCursor ();
+    $connection = null;
+    $databaseObject = null;
+    return $projectsObjectArray;
   }
+
+  function updateProject ()
+  {}
 
   function deleteProject ()
-  {
-
-  }
+  {}
 ?>
