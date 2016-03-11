@@ -93,7 +93,7 @@
                     <?php
                       $advisersObjectArray = readAdviser ();
                       $size = sizeof ($advisersObjectArray);
-                      
+
                       for ($i = 0; $i < $size; $i ++)
                       {
                         echo '<option value = "'.$advisersObjectArray [$i]->getIdentifier ().'">'.$advisersObjectArray [$i]->getName ().' '.$advisersObjectArray [$i]->getLastName ().'</option>';
@@ -111,7 +111,6 @@
                         </div>
                       </div>
                     </div>
-                    </select>
                 </div>
               </div>
             </div>
