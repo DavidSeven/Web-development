@@ -69,31 +69,40 @@
             </tr>
             <tr id = "filters">
               <td colspan = "7">
-                <div class = "container">
-                  <div class = "main row-fluid">
-                    <div class = "col-xs-12 col-sm-12 col-md-6 col-lg-6 filters-padding">
-                      <input class = "form-control center-block" type = "number" name = "identifier" placeholder = "Identifier"/>
+                <form name = "filter-form">
+                  <div class = "container">
+                    <div class = "main row-fluid">
+                      <div class = "col-xs-12 col-sm-12 col-md-6 col-lg-4 filters-padding">
+                        <label>Identifier</label>
+                        <input class = "form-control center-block" type = "number" name = "identifier" placeholder = "Identifier"/>
+                      </div>
+                      <div class = "col-xs-12 col-sm-12 col-md-6 col-lg-4 filters-padding">
+                        <label>Name</label>
+                        <input class = "form-control center-block" type = "text" name = "name" placeholder = "Name"/>
+                      </div>
+                      <div class = "col-xs-12 col-sm-12 col-md-6 col-lg-4 filters-padding">
+                        <label>Investigation line</label>
+                        <input class = "form-control center-block" type = "text" name = "investigationLine" placeholder = "Investigation line"/>
+                      </div>
+                      <div class = "col-xs-12 col-sm-12 col-md-6 col-lg-4 filters-padding">
+                        <label>Calification</label>
+                        <input class = "form-control center-block" type = "number" min = "0" max = "5" name = "calification" placeholder = "Calification"/>
+                      </div>
+                      <div class = "col-xs-12 col-sm-12 col-md-6 col-lg-4 filters-padding">
+                        <label>Added date</label>
+                        <input class = "form-control center-block" type = "date" name = "addedDate" placeholder = "Added date" id = "addedDate"/>
+                      </div>
+                      <div class = "col-xs-12 col-sm-12 col-md-6 col-lg-4 filters-padding">
+                        <label>Quota</label>
+                        <input class = "form-control center-block" type = "number" name = "quota" placeholder = "Quota"/>
+                      </div>
+                      <div class = "col-xs-12 col-sm-12 col-md-6 col-lg-4 filters-padding">
+                        <label>Adviser name</label>
+                        <input class = "form-control center-block" type = "text" name = "adviser-name" placeholder = "Adviser name"/>
+                      </div>
                     </div>
-                    <div class = "col-xs-12 col-sm-12 col-md-6 col-lg-6 filters-padding">
-                      <input class = "form-control center-block" type = "text" name = "name" placeholder = "Name"/>
-                    </div>
-                    <div class = "col-xs-12 col-sm-12 col-md-6 col-lg-6 filters-padding">
-                      <input class = "form-control center-block" type = "text" name = "investigationLine" placeholder = "Investigation line"/>
-                    </div>
-                    <div class = "col-xs-12 col-sm-12 col-md-6 col-lg-6 filters-padding">
-                      <input class = "form-control center-block" type = "text" name = "calification" placeholder = "Calification"/>
-                    </div>
-                    <div class = "col-xs-12 col-sm-12 col-md-6 col-lg-6 filters-padding">
-                      <input class = "form-control center-block" type = "date" name = "addedDate" placeholder = "Added date"/>
-                    </div>
-                    <div class = "col-xs-12 col-sm-12 col-md-6 col-lg-6 filters-padding">
-                      <input class = "form-control center-block" type = "number" name = "quota" placeholder = "Quota"/>
-                    </div>
-                    <div class = "col-xs-12 col-sm-12 col-md-6 col-lg-6 filters-padding">
-                      <input class = "form-control center-block" type = "name" name = "adviserName" placeholder = "Adviser name"/>
-                    </div>
-                  </div>
-                 </div>
+                   </div>
+                </form>
               </td>
             </tr>
             <tr id = "button-filters">

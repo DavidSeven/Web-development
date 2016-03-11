@@ -36,7 +36,7 @@
     	        <tr>
     	           <td align = "left">Date:</td>
     	           <td>
-                   <input class = "form-control" type = "date" name = "addedDate" placeholder = "Added date"/>
+                   <input class = "form-control" type = "date" name = "addedDate" placeholder = "Added date" id = "addedDate"/>
                  </td>
     	        </tr>
     	        <tr>

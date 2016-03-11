@@ -208,3 +208,8 @@ header h1
 {
   display: none;
 }
+
+#addedDate
+{
+  height: 38px;
+}

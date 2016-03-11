@@ -29,7 +29,7 @@ $(document).ready
             },
             error: function (data)
             {
-              console.log ("Package don't sent");
+              console.log ("Package unsent");
             }
           });
         }
