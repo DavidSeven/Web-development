@@ -15,17 +15,17 @@ $(document).ready
       {
         $("#link-to-create").fadeIn
         (
-          500, function ()
+          300, function ()
           {
             $("#link-to-read").fadeIn
             (
-              500, function ()
+              300, function ()
               {
                 $("#link-to-update").fadeIn
                 (
-                  500, function ()
+                  300, function ()
                   {
-                    $("#link-to-delete").fadeIn (500);
+                    $("#link-to-delete").fadeIn (300);
                   }
                 );
               }

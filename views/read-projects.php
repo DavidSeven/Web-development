@@ -80,6 +80,18 @@
                     <div class = "col-xs-12 col-sm-12 col-md-6 col-lg-6 filters-padding">
                       <input class = "form-control center-block" type = "text" name = "investigationLine" placeholder = "Investigation line"/>
                     </div>
+                    <div class = "col-xs-12 col-sm-12 col-md-6 col-lg-6 filters-padding">
+                      <input class = "form-control center-block" type = "text" name = "calification" placeholder = "Calification"/>
+                    </div>
+                    <div class = "col-xs-12 col-sm-12 col-md-6 col-lg-6 filters-padding">
+                      <input class = "form-control center-block" type = "date" name = "addedDate" placeholder = "Added date"/>
+                    </div>
+                    <div class = "col-xs-12 col-sm-12 col-md-6 col-lg-6 filters-padding">
+                      <input class = "form-control center-block" type = "number" name = "quota" placeholder = "Quota"/>
+                    </div>
+                    <div class = "col-xs-12 col-sm-12 col-md-6 col-lg-6 filters-padding">
+                      <input class = "form-control center-block" type = "name" name = "adviserName" placeholder = "Adviser name"/>
+                    </div>
                   </div>
                  </div>
               </td>

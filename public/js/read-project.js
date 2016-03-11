@@ -6,22 +6,22 @@ $(document).ready
     (
       function ()
       {
-        $("#table-read tr").slideUp
+        $("#table-read tr").fadeOut
         (
           300, function ()
           {
-            $("#table-titles").slideDown
+            $("#table-titles").fadeIn
             (
               300, function ()
               {
-                $("#filters-title").slideDown
+                $("#filters-title").fadeIn
                 (
                   300, function ()
                   {
-                    $("#filters").slideDown (
+                    $("#filters").fadeIn (
                       300, function ()
                       {
-                        $("#button-filters").slideDown (300);
+                        $("#button-filters").fadeIn (300);
                       }
                     );
                   }
@@ -50,8 +50,10 @@ $(document).ready
     (
       function ()
       {
-        $("#filters-title").slideUp
-        (
+        $("#table-read tr").fadeIn (300);
+        $("#button-filters").fadeOut (300);
+        $("#filters-title").fadeOut (300);
+        $("#filters").fadeOut (300);
       }
     );
   }
