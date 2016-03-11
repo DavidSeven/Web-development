@@ -10,46 +10,53 @@
   $adviserName = $_POST ['adviser-name'];
 
   $sql = 'select * from project where 1 = 1';
-echo $name;
   if ($identifier != null && $identifier != '')
   {
-    $sql += ' and identifier like %'.$identifier.'%';
+    $sql = $sql.' and identifier like "%'.$identifier.'%"';
   }
 
   if ($name != null && $name != '')
   {
-    $sql += ' and name like %"'.$name.'"%';
+    $sql = $sql.' and name like "%'.$name.'%"';
   }
 
   if ($investigationLine != null && $investigationLine != '')
   {
-    $sql += ' and investigationLine like %"'.$investigationLine.'"%';
+    $sql = $sql.' and investigationLine like "%'.$investigationLine.'%"';
   }
 
   if ($calification != null && $calification != '')
   {
-    $sql += ' and calification like %'.$calification.'%';
+    $sql = $sql.' and calification like "%'.$calification.'%"';
   }
 
   if ($addedDate != null && $addedDate != '')
   {
-    $sql += ' and addedDate like %'.$addedDate.'%';
+    $sql = $sql.' and addedDate like "%'.$addedDate.'%"';
   }
 
   if ($quota != null && $quota != '')
   {
-    $sql += ' and quota like %'.$quota.'%';
+    $sql = $sql.' and quota like "%'.$quota.'%"';
   }
 
 /*  if ($adviserName != null || $adviserName != '')
   {
     $sql += ' and adviserName like %"'.$adviserName.'"%';
   }*/
-$projectsObjectArray= null;
+
   $projectsObjectArray = readSimilarProjects ($sql);
-  /*if ($projectsObjectArray != null && sizeof ($projectsObjectArray) >= 1){
-  for ($i = 0; $i < sizeof ($projectsObjectArray); $i ++)
+  $size = sizeof ($projectsObjectArray);
+
+  if ($projectsObjectArray != null && $size > 1)
   {
-    echo $projectsObjectArray [$i]->getName ().'<br>';
-  }}else {echo "nada";}*/
+    for ($i = 0; $i < $size; $i ++)
+    {
+      echo $projectsObjectArray [$i]->getName ().'<br>';
+    }
+  }
+  else
+  {
+    echo $projectsObjectArray->getName ().'<br>';
+  }
 ?>
