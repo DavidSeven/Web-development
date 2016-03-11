@@ -9,16 +9,18 @@
   $authors = null;
   $i = 0;
 
-  foreach ($_POST ['authors'] as $selectedItem)
-  {
-    $i ++;
-    $authors [$i] = $selectedItem;
-  }
-
   if ($calification == null)
   {
     $calification = 0;
   }
 
   createProject ($name, $investigationLine, $calification, $addedDate, $adviserIdentifier);
+  $projectObject = readSpecificProject ($name);
+
+  foreach ($_POST ['authors'] as $selectedItem)
+  {
+    $i ++;
+    $authors [$i] = $selectedItem;
+    createIncludesRelation ($authors [$i], $projectObject->getIdentifier ());
+  }
 ?>

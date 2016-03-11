@@ -2,9 +2,6 @@
   require_once ('../models/database.php');
   require ('../models/author.php');
 
-  function createAuthor ($identifier, $name, $lastName)
-  {}
-
   function readAuthor ()
   {
     $databaseObject = new Database ();
@@ -26,10 +23,4 @@
     $databaseObject = null;
     return $authorsObjectArray;
   }
-
-  function updateAuthor ()
-  {}
-
-  function deleteAuthor ()
-  {}
 ?>

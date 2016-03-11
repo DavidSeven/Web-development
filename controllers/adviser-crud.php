@@ -2,9 +2,6 @@
   require_once ('../models/database.php');
   require ('../models/adviser.php');
 
-  function createAdviser ($identifier, $name, $lastName)
-  {}
-
   function readAdviser ()
   {
     $databaseObject = new Database ();
@@ -26,10 +23,4 @@
     $databaseObject = null;
     return $advisersObjectArray;
   }
-
-  function updateAdviser ()
-  {}
-
-  function deleteAdviser ()
-  {}
 ?>

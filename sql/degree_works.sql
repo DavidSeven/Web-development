@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 11, 2016 at 05:38 AM
+-- Generation Time: Mar 11, 2016 at 06:21 AM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -35,6 +35,10 @@ select * from author$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `spGetAllProjects`()
     NO SQL
 select * from project$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spGetProject`(IN `spName` VARCHAR(100))
+    NO SQL
+select * from project where name = spName$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `spSetAdviser`(IN `spIdentifier` INT(11) UNSIGNED, IN `spName` VARCHAR(20) CHARSET utf8, IN `spLastName` VARCHAR(20) CHARSET utf8)
     NO SQL
@@ -127,25 +131,6 @@ CREATE TABLE IF NOT EXISTS `project` (
   `quota` int(1) NOT NULL DEFAULT '3',
   `adviserIdentifier` int(11) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `project`
---
-
-INSERT INTO `project` (`identifier`, `name`, `investigationLine`, `calification`, `addedDate`, `quota`, `adviserIdentifier`) VALUES
-(1, 'Lights recognition', 'Software engineering', 5, NULL, 3, 1),
-(2, 'Automathic server', 'Systems engineering', 3, NULL, 3, 4),
-(4, 'Test', 'Test', 0, NULL, 3, 4),
-(5, 'Test 2', 'Test 2', 0, NULL, 3, 2),
-(6, 'Test 3', 'Test 3', 0, NULL, 3, 1),
-(8, 'Test 4', 'Test 4', 3, NULL, 3, 1),
-(9, 'Test 5', 'Test 5', 0, NULL, 3, 2),
-(10, 'Test 6', 'Test 6', 0, NULL, 3, 4),
-(11, 'Test 7 ', 'Test 7', 5, NULL, 3, 3),
-(12, 'Test 8', 'Test 8', 1, NULL, 3, 4),
-(14, 'Test 9', 'Test 9', 1, NULL, 3, 4),
-(15, 'Test 10', 'Test 10', 1, '2016-03-25', 3, 4),
-(16, 'Test 11', 'Test 11', 2, '2016-03-11', 3, 3);
 
 --
 -- Indexes for dumped tables
