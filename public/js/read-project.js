@@ -30,19 +30,6 @@ $(document).ready
             );
           }
         );
-      /*$("#filters-title").slideDown
-        (
-          300, function ()
-          {
-            $("#filters").slideDown
-            (
-              300, function ()
-              {
-                $("#open-filters").slideUp (300);
-              }
-            );
-          }
-        );*/
       }
     );
 
@@ -51,9 +38,9 @@ $(document).ready
       function ()
       {
         $("#table-read tr").fadeIn (300);
-        $("#button-filters").fadeOut (300);
-        $("#filters-title").fadeOut (300);
-        $("#filters").fadeOut (300);
+        $("#button-filters").css ("display", "none");
+        $("#filters-title").css ("display", "none");
+        $("#filters").css ("display", "none");
       }
     );
   }
