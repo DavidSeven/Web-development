@@ -3,9 +3,7 @@
   require ('../models/author.php');
 
   function createAuthor ($identifier, $name, $lastName)
-  {
-    $authorsObjectArray = new Author ($identifier, $name, $lastName);
-  }
+  {}
 
   function readAuthor ()
   {
@@ -30,12 +28,8 @@
   }
 
   function updateAuthor ()
-  {
-
-  }
+  {}
 
   function deleteAuthor ()
-  {
-
-  }
+  {}
 ?>

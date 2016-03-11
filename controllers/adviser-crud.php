@@ -3,9 +3,7 @@
   require ('../models/adviser.php');
 
   function createAdviser ($identifier, $name, $lastName)
-  {
-    $advisersObjectArray = new Author ($identifier, $name, $lastName);
-  }
+  {}
 
   function readAdviser ()
   {
@@ -30,12 +28,8 @@
   }
 
   function updateAdviser ()
-  {
-
-  }
+  {}
 
   function deleteAdviser ()
-  {
-
-  }
+  {}
 ?>

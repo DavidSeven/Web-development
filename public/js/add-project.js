@@ -6,7 +6,7 @@ $(document).ready
     (
       function (event)
       {
-        if ($("select[name=authors] option:selected").length <= 3 && $("select[name=authors] option:selected").length >= 1 && $("select[name=advisers]").val () != 0)
+        if ($("#authorsSelect option:selected").length <= 3 && $("#authorsSelect option:selected").length >= 1 && $("select[name=advisers]").val () != 0)
         {
           $.ajax
           ({
@@ -18,6 +18,7 @@ $(document).ready
             {
               console.log ("Package sent");
               $("form[name=add-project-form]") [0].reset ();
+              alert ("Project added.");
               $(".container").slideUp
               (
                 500, function ()
@@ -34,7 +35,7 @@ $(document).ready
         }
         else
         {
-            if ($("select[name=authors] option:selected").length > 3 || $("select[name=authors] option:selected").length < 1)
+            if ($("#authorsSelect option:selected").length > 3 || $("#authorsSelect option:selected").length < 1)
             {
               alert ("Please, check this:\nMinimum: 1 authors\nMaximum: 3 authors\n");
               for(i = 0; i < 3; i ++)

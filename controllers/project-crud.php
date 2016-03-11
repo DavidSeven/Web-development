@@ -26,22 +26,22 @@
   {
     $databaseObject = new Database ();
     $connection = $databaseObject->connect ();
-    $query = $connection->prepare ('CALL spGetAllAuthors ()');
+    $query = $connection->prepare ('CALL spGetAllProjects ()');
     $query->execute ();
     $result = $query->fetchAll ();
     $i = 0;
-    $authorsObjectArray = null;
+    $projectsObjectArray = null;
 
     foreach ($result as $key => $value)
     {
-      $authorsObjectArray [$i] = new Author ($value ['identifier'], $value ['name'], $value ['lastName']);
+      $projectsObjectArray [$i] = new Project ($value ['identifier'], $value ['name'], $value ['investigationLine'], $value ['calification'], $value ['addedDate'], $value ['quota'], $value ['adviserIdentifier']);
       $i ++;
     }
 
     $query->closeCursor ();
     $connection = null;
     $databaseObject = null;
-    return $authorsObjectArray;
+    return $projectsObjectArray;
   }
 
   function updateProject ()

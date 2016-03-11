@@ -28,7 +28,7 @@
           </a>
         </section>
         <section class = "col-xs-12 col-sm-6 col-md-6 col-lg-3">
-          <a href = "#">
+          <a href = "../views/read-projects.php">
             <div class = "circle container-fluid" id = "link-to-read">
               <img src = "images/r.jpg" alt = "Leer">
             </div>
