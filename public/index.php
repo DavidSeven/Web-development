@@ -1,5 +1,5 @@
 <?php
-  require ('../controllers/init.php');
+  require ('init.php');
 ?>
 
 <!DOCTYPE HTML>

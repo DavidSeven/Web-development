@@ -23,4 +23,24 @@
     $databaseObject = null;
     return $advisersObjectArray;
   }
+
+  function readSpecificAdviserByIdentifier ($identifier)
+  {
+    $databaseObject = new Database ();
+    $connection = $databaseObject->connect ();
+    $query = $connection->prepare ('CALL spGetAdviserByIdentifier ('.$identifier.')');
+    $query->execute ();
+    $result = $query->fetchAll ();
+    $advisersObject = null;
+
+    foreach ($result as $key => $value)
+    {
+      $advisersObject = new Adviser ($identifier, $value ['name'], $value ['lastName']);
+    }
+
+    $query->closeCursor ();
+    $connection = null;
+    $databaseObject = null;
+    return $advisersObject;
+  }
 ?>

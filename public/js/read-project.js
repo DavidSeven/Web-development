@@ -60,24 +60,6 @@ $(document).ready
         }
         else
         {
-          var identifier = $("input[name=identifier]").val ();
-          var name = $("input[name=name]").val ();
-          var investigationLine = $("input[name=investigationLine]").val ();
-          var calification = $("input[name=calification]").val ();
-          var addedDate = $("input[name=addedDate]").val ();
-          var quota = $("input[name=quota]").val ();
-          var adviserName = $("input[name=adviser-name]").val ();
-
-          var dataset = {
-                          'identifier': identifier,
-                          'name': name,
-                          'investigationLine': investigationLine,
-                          'calification': calification,
-                          'addedDate': addedDate,
-                          'quota': quota,
-                          'adviserName': adviserName
-                        }
-
           $.ajax
           ({
             type: "post",
@@ -87,11 +69,15 @@ $(document).ready
             success: function (data)
             {
               $("form[name=filter-form]") [0].reset ();
-              console.log ("Package sent\nDataset:\n" + data.identifier + "\n" + data.name + "\n" + data.investigationLine + "\n" + data.calification + "\n" + data.addedDate + "\n" + data.quota);
+              console.log ("Package sent");
+              //console.log ("Dataset:\n" + data [1].identifier + "\n" + data [0].name + "\n" + data [0].investigationLine + "\n" + data [0].calification + "\n" + data [0].addedDate + "\n" + data [0].quota + "\n" + data [0].adviserName);
+              console.log (data);
+              console.log (data.hola);
             },
             error: function (data)
             {
               console.log ("Package unsent");
+              console.log (data);
             }
           });
         }

@@ -62,14 +62,14 @@
   {
     $databaseObject = new Database ();
     $connection = $databaseObject->connect ();
-    $query = $connection->prepare ('CALL spGetProject ("'.$name.'")');
+    $query = $connection->prepare ('CALL spGetProjectByName ("'.$name.'")');
     $query->execute ();
     $result = $query->fetchAll ();
     $projectsObject = null;
 
     foreach ($result as $key => $value)
     {
-      $projectsObject = new Project ($value ['identifier'], $value ['name'], $value ['investigationLine'], $value ['calification'], $value ['addedDate'], $value ['quota'], $value ['adviserIdentifier']);
+      $projectsObject = new Project ($value ['identifier'], $name, $value ['investigationLine'], $value ['calification'], $value ['addedDate'], $value ['quota'], $value ['adviserIdentifier']);
     }
 
     $query->closeCursor ();
@@ -86,10 +86,12 @@
     $query->execute ();
     $result = $query->fetchAll ();
     $projectsObjectArray = null;
+    $i = 0;
 
     foreach ($result as $key => $value)
     {
-      $projectsObjectArray = new Project ($value ['identifier'], $value ['name'], $value ['investigationLine'], $value ['calification'], $value ['addedDate'], $value ['quota'], $value ['adviserIdentifier']);
+      $projectsObjectArray [$i] = new Project ($value ['identifier'], $value ['name'], $value ['investigationLine'], $value ['calification'], $value ['addedDate'], $value ['quota'], $value ['adviserIdentifier']);
+      $i ++;
     }
 
     $query->closeCursor ();

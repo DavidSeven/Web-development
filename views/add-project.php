@@ -1,5 +1,5 @@
 <?php
-  require ('../controllers/init.php');
+  require ('../public/init.php');
   require ('../controllers/author-crud.php');
   require ('../controllers/adviser-crud.php');
 ?>

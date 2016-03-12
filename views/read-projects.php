@@ -1,5 +1,5 @@
 <?php
-  require ('../controllers/init.php');
+  require ('../public/init.php');
   require ('../controllers/project-crud.php');
 ?>
 
@@ -7,7 +7,7 @@
 <html>
 	<head>
 		<?php
-			head ('Add project', 'other');
+			head ('Read project', 'other');
       javascript ('undefined');
       loader ();
 		?>
@@ -69,7 +69,7 @@
             </tr>
             <tr id = "filters">
               <td colspan = "7">
-                <form name = "filter-form">
+                <form name = "filter-form"> <!--action = "../controllers/read-specific-project.php" method = "post">-->
                   <div class = "container">
                     <div class = "main row-fluid">
                       <div class = "col-xs-12 col-sm-12 col-md-6 col-lg-4 filters-padding">
@@ -100,6 +100,7 @@
                         <label>Adviser name</label>
                         <input class = "form-control center-block" type = "text" name = "adviser-name" placeholder = "Adviser name"/>
                       </div>
+                      <!--<input class = "form-control center-block" type = "submit" name = "botonsito" value = "Submit"/>-->
                     </div>
                    </div>
                 </form>
