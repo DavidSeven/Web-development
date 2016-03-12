@@ -44,7 +44,7 @@ $(document).ready
       }
     );
 
-/*    $("input[name=search]").click
+    $("input[name=search]").click
     (
       function ()
       {
@@ -83,14 +83,11 @@ $(document).ready
             type: "post",
             url: "../controllers/read-specific-project.php",
             data: $("form[name=filter-form]").serialize (),
-            //dataType: "json",
             encode: true,
             success: function (data)
             {
-              console.log ("Package sent");
               $("form[name=filter-form]") [0].reset ();
-              alert ("Project added.");
-
+              console.log ("Package sent\nDataset:\n" + data.identifier + "\n" + data.name + "\n" + data.investigationLine + "\n" + data.calification + "\n" + data.addedDate + "\n" + data.quota);
             },
             error: function (data)
             {
@@ -99,6 +96,6 @@ $(document).ready
           });
         }
       }
-    );*/
+    );
   }
 );

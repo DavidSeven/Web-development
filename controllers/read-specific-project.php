@@ -47,16 +47,32 @@
 
   $projectsObjectArray = readSimilarProjects ($sql);
   $size = sizeof ($projectsObjectArray);
+  $jsonData = array ();
 
   if ($projectsObjectArray != null && $size > 1)
   {
     for ($i = 0; $i < $size; $i ++)
     {
-      echo $projectsObjectArray [$i]->getName ().'<br>';
+      $jsonData [$i]['identifier'] $projectsObjectArray [$i]->getIdentifier ();
+      $jsonData [$i]['name'] $projectsObjectArray [$i]->getName ();
+      $jsonData [$i]['investigationLine'] $projectsObjectArray [$i]->getInvestigationLine ();
+      $jsonData [$i]['calification'] $projectsObjectArray [$i]->getCalification ();
+      $jsonData [$i]['addedDate'] $projectsObjectArray [$i]->getAddedDate ();
+      $jsonData [$i]['quota'] $projectsObjectArray [$i]->getQuota ();
     }
   }
   else
   {
-    echo $projectsObjectArray->getName ().'<br>';
+    $jsonData ['identifier'] = $projectsObjectArray->getIdentifier ();
+    $jsonData ['name'] = $projectsObjectArray->getName ();
+    $jsonData ['investigationLine'] = $projectsObjectArray->getInvestigationLine ();
+    $jsonData ['calification'] = $projectsObjectArray->getCalification ();
+    $jsonData ['addedDate'] = $projectsObjectArray->getAddedDate ();
+    $jsonData ['quota'] = $projectsObjectArray->getQuota ();
+    //$jsonData ['adviserName'] =
   }
+
+  header ('Content-type: application/json; charset=utf-8');
+  json_encode ($jsonData);
+  exit ();
 ?>
