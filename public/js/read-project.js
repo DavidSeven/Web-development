@@ -70,9 +70,9 @@ $(document).ready
             {
               $("form[name=filter-form]") [0].reset ();
               console.log ("Package sent");
-              //console.log ("Dataset:\n" + data [1].identifier + "\n" + data [0].name + "\n" + data [0].investigationLine + "\n" + data [0].calification + "\n" + data [0].addedDate + "\n" + data [0].quota + "\n" + data [0].adviserName);
+              console.log ("Dataset:");
               console.log (data);
-              console.log (data.hola);
+              
             },
             error: function (data)
             {

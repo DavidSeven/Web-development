@@ -82,28 +82,21 @@
 
   $projectsObjectArray = readSimilarProjects ($sql);
   $size = sizeof ($projectsObjectArray);
+  $jsonData = null;
 
   if ($projectsObjectArray != null && $check == true)
   {
     for ($i = 0; $i < $size; $i ++)
     {
       $adviserObject = readSpecificAdviserByIdentifier ($projectsObjectArray [$i]->getAdviserIdentifier ());
-      /*$jsonData ['identifier'] = $projectsObjectArray [$i]->getIdentifier ();
-      $jsonData ['name'] = $projectsObjectArray [$i]->getName ();
-      $jsonData ['investigationLine'] = $projectsObjectArray [$i]->getInvestigationLine ();
-      $jsonData ['calification'] = $projectsObjectArray [$i]->getCalification ();
-      $jsonData ['addedDate'] = $projectsObjectArray [$i]->getAddedDate ();
-      $jsonData ['quota'] = $projectsObjectArray [$i]->getQuota ();
-      $jsonData ['adviserName'] = $adviserObject->getName ();*/
 
-
-      /*$jsonData [$i] = array
+      $jsonData [$i] = array
       (
         'identifier' => $projectsObjectArray [$i]->getIdentifier (), 'name' => $projectsObjectArray [$i]->getName (),
         'investigationLine' => $projectsObjectArray [$i]->getInvestigationLine (), 'calification' => $projectsObjectArray [$i]->getCalification (),
         'addedDate' => $projectsObjectArray [$i]->getAddedDate (), 'quota' => $projectsObjectArray [$i]->getQuota (),
         'adviserName' => $adviserObject->getName ()
-      );*/
+      );
       /*$adviserObject = readSpecificAdviserByIdentifier ($projectsObjectArray [$i]->getAdviserIdentifier ());
       echo $projectsObjectArray [$i]->getIdentifier ().'<br>';
       echo $projectsObjectArray [$i]->getName ().'<br>';
@@ -113,14 +106,9 @@
       echo $projectsObjectArray [$i]->getQuota ().'<br>';
       echo $adviserObject->getName ().'<br>';*/
     }
-    $jsonData ['hola'] = 10;
-  }
-  else
-  {
-    $jsonData ['hola'] = 20;
   }
 
   header ('Content-type: application/json; charset=utf-8');
-  json_encode ($jsonData);
+  echo json_encode ($jsonData);
   exit ();
 ?>
