@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 11, 2016 at 06:21 AM
+-- Generation Time: Mar 12, 2016 at 07:32 AM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -24,6 +24,10 @@ DELIMITER $$
 --
 -- Procedures
 --
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spGetAdviserByIdentifier`(IN `spIdentifier` VARCHAR(20))
+    NO SQL
+select name, lastName from adviser where identifier = spIdentifier$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `spGetAllAdvisers`()
     NO SQL
 select * from adviser$$
@@ -36,9 +40,9 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `spGetAllProjects`()
     NO SQL
 select * from project$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `spGetProject`(IN `spName` VARCHAR(100))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spGetProjectByName`(IN `spName` VARCHAR(100))
     NO SQL
-select * from project where name = spName$$
+select identifier, investigationLine, calification, addedDate, quota, adviserIdentifier from project where name = spName$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `spSetAdviser`(IN `spIdentifier` INT(11) UNSIGNED, IN `spName` VARCHAR(20) CHARSET utf8, IN `spLastName` VARCHAR(20) CHARSET utf8)
     NO SQL
@@ -103,7 +107,8 @@ CREATE TABLE IF NOT EXISTS `author` (
 INSERT INTO `author` (`identifier`, `name`, `lastName`) VALUES
 (1, 'Author', 'One'),
 (2, 'Author', 'Two'),
-(3, 'Author', 'Three');
+(3, 'Author', 'Three'),
+(4, 'Author', 'Four');
 
 -- --------------------------------------------------------
 
@@ -115,6 +120,15 @@ CREATE TABLE IF NOT EXISTS `includes` (
   `authorIdentifier` int(11) NOT NULL,
   `projectIdentifier` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `includes`
+--
+
+INSERT INTO `includes` (`authorIdentifier`, `projectIdentifier`) VALUES
+(1, 17),
+(2, 17),
+(3, 17);
 
 -- --------------------------------------------------------
 
@@ -130,7 +144,14 @@ CREATE TABLE IF NOT EXISTS `project` (
   `addedDate` date DEFAULT NULL,
   `quota` int(1) NOT NULL DEFAULT '3',
   `adviserIdentifier` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `project`
+--
+
+INSERT INTO `project` (`identifier`, `name`, `investigationLine`, `calification`, `addedDate`, `quota`, `adviserIdentifier`) VALUES
+(17, 'Oriented object programming', 'Programming I', 4, '2016-03-16', 0, 1);
 
 --
 -- Indexes for dumped tables
@@ -168,7 +189,7 @@ ALTER TABLE `project`
 -- AUTO_INCREMENT for table `project`
 --
 ALTER TABLE `project`
-MODIFY `identifier` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
+MODIFY `identifier` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
 --
 -- Constraints for dumped tables
 --

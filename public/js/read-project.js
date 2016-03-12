@@ -72,7 +72,7 @@ $(document).ready
               console.log ("Package sent");
               console.log ("Dataset:");
               console.log (data);
-              
+
             },
             error: function (data)
             {
