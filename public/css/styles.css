@@ -57,15 +57,14 @@ header h1
 
 #link-to-create
 {
-  webkit-transition: transform 1s;
+  -webkit-transition: transform 1s;
   transition: transform 1s;
   display: none;
 }
 
 #link-to-create:hover
 {
-  transform: scale(1, 1);
-  transform: rotate(-20deg);
+  transform: translate(5%, -30%);
 }
 
 #link-to-read
@@ -77,8 +76,7 @@ header h1
 
 #link-to-read:hover
 {
-  transform: scale(1);
-  transform: rotate(-5deg);
+  transform: translate(5%, -30%);
 }
 
 #link-to-update
@@ -90,8 +88,7 @@ header h1
 
 #link-to-update:hover
 {
-  transform: scale(1);
-  transform: rotate(5deg);
+  transform: translate(5%, -30%);
 }
 
 #link-to-delete
@@ -103,8 +100,7 @@ header h1
 
 #link-to-delete:hover
 {
-  transform: scale(1);
-  transform: rotate(20deg);
+  transform: translate(5%, -30%);
 }
 
 #pre-loader

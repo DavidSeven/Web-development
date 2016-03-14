@@ -28,7 +28,7 @@
               <td>Investigation line</td>
               <td>Calification</td>
               <td>Added date</td>
-              <td>Adviser identifier</td>
+              <td>Adviser name</td>
               <td>Quota</td>
     	      </tr>
             <?php

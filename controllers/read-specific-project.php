@@ -97,14 +97,6 @@
         'addedDate' => $projectsObjectArray [$i]->getAddedDate (), 'quota' => $projectsObjectArray [$i]->getQuota (),
         'adviserName' => $adviserObject->getName ()
       );
-      /*$adviserObject = readSpecificAdviserByIdentifier ($projectsObjectArray [$i]->getAdviserIdentifier ());
-      echo $projectsObjectArray [$i]->getIdentifier ().'<br>';
-      echo $projectsObjectArray [$i]->getName ().'<br>';
-      echo $projectsObjectArray [$i]->getInvestigationLine ().'<br>';
-      echo $projectsObjectArray [$i]->getCalification ().'<br>';
-      echo $projectsObjectArray [$i]->getAddedDate ().'<br>';
-      echo $projectsObjectArray [$i]->getQuota ().'<br>';
-      echo $adviserObject->getName ().'<br>';*/
     }
   }
 

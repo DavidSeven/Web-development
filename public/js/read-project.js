@@ -68,11 +68,29 @@ $(document).ready
             encode: true,
             success: function (data)
             {
+              var size = data.length;
               $("form[name=filter-form]") [0].reset ();
+              $("#table-read").find ("tr:gt(0)").remove ();
               console.log ("Package sent");
               console.log ("Dataset:");
               console.log (data);
+              var newRow = "";
 
+              for (var i = 0; i < size; i ++)
+              {
+                newRow += "<tr>";
+                newRow += "<td>" + data [i].identifier + "</td>";
+                newRow += "<td>" + data [i].name + "</td>";
+                newRow += "<td>" + data [i].investigationLine + "</td>";
+                newRow += "<td>" + data [i].calification + "</td>";
+                newRow += "<td>" + data [i].addedDate + "</td>";
+                newRow += "<td>" + data [i].adviserName + "</td>";
+                newRow += "<td>" + data [i].quota + "</td>";
+                newRow += "</tr>";
+              }
+
+              $("#table-read").append (newRow);
+              $("#table-read").append ($("#open-filters"));
             },
             error: function (data)
             {
