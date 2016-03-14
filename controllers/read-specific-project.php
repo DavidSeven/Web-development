@@ -72,7 +72,7 @@
 
   if ($adviserName != null || $adviserName != '')
   {
-    $sql += ' and adviser.name like %"'.$adviserName.'"%';
+    $sql = $sql.' and adviser.name like "%'.$adviserName.'%"';
 
     if ($check == false)
     {

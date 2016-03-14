@@ -68,6 +68,8 @@ $(document).ready
             encode: true,
             success: function (data)
             {
+              if (data != null)
+              {
               var size = data.length;
               $("form[name=filter-form]") [0].reset ();
               $("#table-read").find ("tr:gt(0)").remove ();
@@ -88,7 +90,8 @@ $(document).ready
                 newRow += "<td>" + data [i].adviserName + "</td>";
                 newRow += "<td>" + data [i].quota + "</td>";
                 newRow += "</tr>";
-              }
+                }
+              }else{alert ("nada");}
 
               $("#table-read").append (newRow);
               $("#table-read").append (newFilterButtons);
