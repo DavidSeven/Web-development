@@ -1,5 +1,5 @@
 <?php
-  require ('project-crud.php');
+  require_once ('project-crud.php');
 
   $name = $_POST ['name'];
   $addedDate = $_POST ['addedDate'];
@@ -14,7 +14,7 @@
     $calification = 0;
   }
 
-  createProject ($name, $investigationLine, $calification, $addedDate, $adviserIdentifier);
+  createProject ($name, $calification, $addedDate, $adviserIdentifier, $investigationLine);
   $projectObject = readSpecificProject ($name);
 
   foreach ($_POST ['authors'] as $selectedItem)

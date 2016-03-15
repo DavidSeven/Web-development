@@ -1,8 +1,8 @@
 <?php
   require_once ('../models/database.php');
-  require ('../models/author.php');
+  require_once ('../models/author.php');
 
-  function readAuthor ()
+  function readAuthors ()
   {
     $databaseObject = new Database ();
     $connection = $databaseObject->connect ();
@@ -10,17 +10,17 @@
     $query->execute ();
     $result = $query->fetchAll ();
     $i = 0;
-    $authorsObjectArray = null;
+    $authorObjectsArray = null;
 
     foreach ($result as $key => $value)
     {
-      $authorsObjectArray [$i] = new Author ($value ['identifier'], $value ['name'], $value ['lastName']);
+      $authorObjectsArray [$i] = new Author ($value ['identifier'], $value ['name'], $value ['lastName']);
       $i ++;
     }
 
     $query->closeCursor ();
     $connection = null;
     $databaseObject = null;
-    return $authorsObjectArray;
+    return $authorObjectsArray;
   }
 ?>

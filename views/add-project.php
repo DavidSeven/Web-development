@@ -2,6 +2,7 @@
   require ('../public/init.php');
   require ('../controllers/author-crud.php');
   require ('../controllers/adviser-crud.php');
+  require ('../controllers/investigationLine-crud.php');
 ?>
 
 <!DOCTYPE HTML>
@@ -48,7 +49,18 @@
     	        <tr>
     	           <td align = "left">Investigation line:</td>
     	           <td>
-                   <input class = "form-control" type = "text" name = "investigationLine" placeholder = "Specific research line" required/>
+                   <select class = "form-control" name = "investigationLine">
+                     <option value = "0">Choose an investigation line</option>
+                     <?php
+                       $investigationLineObjectsArray = readInvestigationLines ();
+                       $size = sizeof ($investigationLineObjectsArray);
+
+                       for ($i = 0; $i < $size; $i ++)
+                       {
+                         echo '<option value = "'.$investigationLineObjectsArray [$i]->getIdentifier ().'">'.$investigationLineObjectsArray [$i]->getName ().'</option>';
+                       }
+                     ?>
+                   </select>
                  </td>
     	        </tr>
     	        <tr>
@@ -74,7 +86,7 @@
                 <div class = "col-xs-12 col-sm-12 col-md-12 col-lg-12 div-select">
                   <select class = "form-control" multiple = "multiple" name = "authors[]" id = "authorsSelect">
                     <?php
-                      $authorsObjectArray = readAuthor ();
+                      $authorsObjectArray = readAuthors ();
                       $size = sizeof ($authorsObjectArray);
 
                       for ($i = 0; $i < $size; $i ++)
@@ -91,7 +103,7 @@
                   <select class = "form-control" name = "advisers">
                     <option value = "0">Choose an adviser</option>
                     <?php
-                      $advisersObjectArray = readAdviser ();
+                      $advisersObjectArray = readAdvisers ();
                       $size = sizeof ($advisersObjectArray);
 
                       for ($i = 0; $i < $size; $i ++)

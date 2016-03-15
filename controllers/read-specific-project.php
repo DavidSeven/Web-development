@@ -1,6 +1,7 @@
 <?php
-  require ('project-crud.php');
-  require ('adviser-crud.php');
+  require_once ('project-crud.php');
+  require_once ('adviser-crud.php');
+  require_once ('investigationLine-crud.php');
 
   $identifier = $_POST ['identifier'];
   $name = $_POST ['name'];
@@ -10,8 +11,9 @@
   $quota = $_POST ['quota'];
   $adviserName = $_POST ['adviser-name'];
 
-  $sql = 'select project.identifier, project.name, project.investigationLine, project.calification, project.addedDate,
-  project.quota, adviser.identifier as adviserIdentifier from project, adviser where project.adviserIdentifier = adviser.identifier';
+  $sql = 'select project.identifier, project.name, investigationLine.name as investigationLineName, project.calification, project.addedDate,
+  project.quota, adviser.identifier as adviserIdentifier from project, adviser, investigationLine where project.adviserIdentifier = adviser.identifier
+  and investigationLine.identifier = project.investigationLineIdentifier';
   $check = false;
 
   if ($identifier != null && $identifier != '')
@@ -30,9 +32,9 @@
     }
   }
 
-  if ($investigationLine != null && $investigationLine != '')
+  if ($investigationLine != null && $investigationLine != 0)
   {
-    $sql = $sql.' and project.investigationLine like "%'.$investigationLine.'%"';
+    $sql = $sql.' and project.investigationLineIdentifier = '.$investigationLine;
 
     if ($check == false)
     {
@@ -80,21 +82,22 @@
     }
   }
 
-  $projectsObjectArray = readSimilarProjects ($sql);
-  $size = sizeof ($projectsObjectArray);
+  $projectObjectsArray = readSimilarProjects ($sql);
+  $size = sizeof ($projectObjectsArray);
   $jsonData = null;
 
-  if ($projectsObjectArray != null && $check == true)
+  if ($projectObjectsArray != null && $check == true)
   {
     for ($i = 0; $i < $size; $i ++)
     {
-      $adviserObject = readSpecificAdviserByIdentifier ($projectsObjectArray [$i]->getAdviserIdentifier ());
+      $adviserObject = readSpecificAdviserByIdentifier ($projectObjectsArray [$i]->getAdviserIdentifier ());
+      //$investigationLineObject = readSpecificInvestigationLineByIdentifier ();
 
       $jsonData [$i] = array
       (
-        'identifier' => $projectsObjectArray [$i]->getIdentifier (), 'name' => $projectsObjectArray [$i]->getName (),
-        'investigationLine' => $projectsObjectArray [$i]->getInvestigationLine (), 'calification' => $projectsObjectArray [$i]->getCalification (),
-        'addedDate' => $projectsObjectArray [$i]->getAddedDate (), 'quota' => $projectsObjectArray [$i]->getQuota (),
+        'identifier' => $projectObjectsArray [$i]->getIdentifier (), 'name' => $projectObjectsArray [$i]->getName (),
+        'investigationLine' => $projectObjectsArray [$i]->getInvestigationLineIdentifier (), 'calification' => $projectObjectsArray [$i]->getCalification (),
+        'addedDate' => $projectObjectsArray [$i]->getAddedDate (), 'quota' => $projectObjectsArray [$i]->getQuota (),
         'adviserName' => $adviserObject->getName ()
       );
     }

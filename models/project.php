@@ -3,21 +3,21 @@
   {
     private $identifier;
     private $name;
-    private $investigationLine;
     private $calification;
     private $addedDate;
     private $quota;
     private $adviserIdentifier;
+    private $investigationLineIdentifier;
 
-    public function Project ($identifier, $name, $investigationLine, $calification, $addedDate, $quota, $adviserIdentifier)
+    public function Project ($identifier, $name, $calification, $addedDate, $quota, $adviserIdentifier, $investigationLineIdentifier)
     {
       $this->identifier = $identifier;
       $this->name = $name;
-      $this->investigationLine = $investigationLine;
       $this->calification = $calification;
       $this->addedDate = $addedDate;
       $this->quota = $quota;
       $this->adviserIdentifier = $adviserIdentifier;
+      $this->investigationLineIdentifier = $investigationLineIdentifier;
     }
 
     public function setIdentifier ($identifier)
@@ -28,11 +28,6 @@
     public function setName ($name)
     {
       $this->name = $name;
-    }
-
-    public function setInvestigationLine ($investigationLine)
-    {
-      $this->investigationLine = $investigationLine;
     }
 
     public function setCalification ($calification)
@@ -55,6 +50,11 @@
       $this->adviserIdentifier = $adviserIdentifier;
     }
 
+    public function setInvestigationLineIdentifier ($investigationLineIdentifier)
+    {
+      $this->investigationLineIdentifier = $investigationLineIdentifier;
+    }
+
     public function getIdentifier ()
     {
       return $this->identifier;
@@ -63,11 +63,6 @@
     public function getName ()
     {
       return $this->name;
-    }
-
-    public function getInvestigationLine ()
-    {
-      return $this->investigationLine;
     }
 
     public function getCalification ()
@@ -88,6 +83,11 @@
     public function getAdviserIdentifier ()
     {
       return $this->adviserIdentifier;
+    }
+
+    public function getInvestigationLineIdentifier ()
+    {
+      return $this->investigationLineIdentifier;
     }
   }
 ?>

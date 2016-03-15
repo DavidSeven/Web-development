@@ -17,13 +17,14 @@ $(document).ready
             success: function (data)
             {
               console.log ("Package sent");
+              console.log (data);
               $("form[name=add-project-form]") [0].reset ();
               alert ("Project added.");
               $(".container").slideUp
               (
                 500, function ()
                 {
-                  window.location.href = "../public/index.php";
+                  window.location.href = "../views/add-project.php";
                 }
               );
             },
@@ -76,7 +77,7 @@ $(document).ready
       function ()
       {
         if ($("input[name=name]").val () != null && $("input[name=name]").val () != "" &&
-        $("input[name=investigationLine]").val () != null && $("input[name=investigationLine]").val () != "")
+        $("select[name=investigationLine]").val () != 0)
         {
           $("#project-1").fadeOut
           (
@@ -95,11 +96,11 @@ $(document).ready
               $("input[name=name]").fadeTo ('slow', 0.1).fadeTo ('slow', 1.0);
             }
           }
-          if ($("input[name=investigationLine]").val () == null || $("input[name=investigationLine]").val () == "")
+          if ($("select[name=investigationLine]").val () == 0)
           {
             for(i = 0; i < 3; i ++)
             {
-              $("input[name=investigationLine]").fadeTo ('slow', 0.1).fadeTo ('slow', 1.0);
+              $("select[name=investigationLine]").fadeTo ('slow', 0.1).fadeTo ('slow', 1.0);
             }
           }
         }

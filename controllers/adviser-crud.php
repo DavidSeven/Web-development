@@ -1,8 +1,8 @@
 <?php
   require_once ('../models/database.php');
-  require ('../models/adviser.php');
+  require_once ('../models/adviser.php');
 
-  function readAdviser ()
+  function readAdvisers ()
   {
     $databaseObject = new Database ();
     $connection = $databaseObject->connect ();
@@ -10,18 +10,18 @@
     $query->execute ();
     $result = $query->fetchAll ();
     $i = 0;
-    $advisersObjectArray = null;
+    $adviserObjectsArray = null;
 
     foreach ($result as $key => $value)
     {
-      $advisersObjectArray [$i] = new Author ($value ['identifier'], $value ['name'], $value ['lastName']);
+      $adviserObjectsArray [$i] = new Author ($value ['identifier'], $value ['name'], $value ['lastName']);
       $i ++;
     }
 
     $query->closeCursor ();
     $connection = null;
     $databaseObject = null;
-    return $advisersObjectArray;
+    return $adviserObjectsArray;
   }
 
   function readSpecificAdviserByIdentifier ($identifier)

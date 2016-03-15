@@ -22,7 +22,7 @@
       <div class = "main row">
         <div class = "col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-1 col-lg-6 col-lg-offset-2 container-fluid">
           <table class = "table" id = "table-read">
-            <tr id = "table-titles">
+            <tr id = "table-titles" class = "rm">
         	    <td>Identifier</td>
               <td>Name</td>
               <td>Investigation line</td>
@@ -32,19 +32,19 @@
               <td>Quota</td>
     	      </tr>
             <?php
-              $projectsObjectArray = readProject ();
-              $size = sizeof ($projectsObjectArray);
+              $data = readProjects ();
+              $size = sizeof ($data ['projects']);
 
               for ($i = 0; $i < $size; $i ++)
               {
-                echo '<tr>
-                        <td>'.$projectsObjectArray [$i]->getIdentifier ().'</td>
-                        <td>'.$projectsObjectArray [$i]->getName ().'</td>
-                        <td>'.$projectsObjectArray [$i]->getInvestigationLine ().'</td>
-                        <td>'.$projectsObjectArray [$i]->getCalification ().'</td>
-                        <td>'.$projectsObjectArray [$i]->getAddedDate ().'</td>
-                        <td>'.$projectsObjectArray [$i]->getAdviserIdentifier ().'</td>
-                        <td>'.$projectsObjectArray [$i]->getQuota ().'</td>
+                echo '<tr class = "rm">
+                        <td>'.$data ['projects'][$i]->getIdentifier ().'</td>
+                        <td>'.$data ['projects'][$i]->getName ().'</td>
+                        <td>'.$data ['investigationLines'][$i]->getName ().'</td>
+                        <td>'.$data ['projects'][$i]->getCalification ().'</td>
+                        <td>'.$data ['projects'][$i]->getAddedDate ().'</td>
+                        <td>'.$data ['advisers'][$i]->getName ().' '.$data ['advisers'][$i]->getLastName ().'</td>
+                        <td>'.$data ['projects'][$i]->getQuota ().'</td>
                       </tr>';
               }
             ?>
@@ -69,38 +69,48 @@
             </tr>
             <tr id = "filters">
               <td colspan = "7">
-                <form name = "filter-form"> <!--action = "../controllers/read-specific-project.php" method = "post">-->
+                <form name = "filter-form">
                   <div class = "container">
                     <div class = "main row-fluid">
-                      <div class = "col-xs-12 col-sm-12 col-md-6 col-lg-4 filters-padding">
+                      <div class = "col-xs-12 col-sm-12 col-md-6 col-lg-6 filters-padding">
                         <label>Identifier</label>
                         <input class = "form-control center-block" type = "number" name = "identifier" placeholder = "Identifier"/>
                       </div>
-                      <div class = "col-xs-12 col-sm-12 col-md-6 col-lg-4 filters-padding">
+                      <div class = "col-xs-12 col-sm-12 col-md-6 col-lg-6 filters-padding">
                         <label>Name</label>
                         <input class = "form-control center-block" type = "text" name = "name" placeholder = "Name"/>
                       </div>
-                      <div class = "col-xs-12 col-sm-12 col-md-6 col-lg-4 filters-padding">
+                      <div class = "col-xs-12 col-sm-12 col-md-6 col-lg-6 filters-padding">
                         <label>Investigation line</label>
-                        <input class = "form-control center-block" type = "text" name = "investigationLine" placeholder = "Investigation line"/>
+                        <select class = "form-control" name = "investigationLine">
+                          <option value = "0">Choose an investigation line</option>
+                          <?php
+                            $investigationLineObjectsArray = readInvestigationLines ();
+                            $size = sizeof ($investigationLineObjectsArray);
+
+                            for ($i = 0; $i < $size; $i ++)
+                            {
+                              echo '<option value = "'.$investigationLineObjectsArray [$i]->getIdentifier ().'">'.$investigationLineObjectsArray [$i]->getName ().'</option>';
+                            }
+                          ?>
+                        </select>
                       </div>
-                      <div class = "col-xs-12 col-sm-12 col-md-6 col-lg-4 filters-padding">
+                      <div class = "col-xs-12 col-sm-12 col-md-6 col-lg-6 filters-padding">
                         <label>Calification</label>
                         <input class = "form-control center-block" type = "number" min = "0" max = "5" name = "calification" placeholder = "Calification"/>
                       </div>
-                      <div class = "col-xs-12 col-sm-12 col-md-6 col-lg-4 filters-padding">
+                      <div class = "col-xs-12 col-sm-12 col-md-6 col-lg-6 filters-padding">
                         <label>Added date</label>
                         <input class = "form-control center-block" type = "date" name = "addedDate" placeholder = "Added date" id = "addedDate"/>
                       </div>
-                      <div class = "col-xs-12 col-sm-12 col-md-6 col-lg-4 filters-padding">
+                      <div class = "col-xs-12 col-sm-12 col-md-6 col-lg-6 filters-padding">
                         <label>Quota</label>
                         <input class = "form-control center-block" type = "number" name = "quota" placeholder = "Quota"/>
                       </div>
-                      <div class = "col-xs-12 col-sm-12 col-md-6 col-lg-4 filters-padding">
+                      <div class = "col-xs-12 col-sm-12 col-md-6 col-lg-6 filters-padding">
                         <label>Adviser name</label>
                         <input class = "form-control center-block" type = "text" name = "adviser-name" placeholder = "Adviser name"/>
                       </div>
-                      <!--<input class = "form-control center-block" type = "submit" name = "botonsito" value = "Submit"/>-->
                     </div>
                    </div>
                 </form>

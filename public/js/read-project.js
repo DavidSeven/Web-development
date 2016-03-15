@@ -51,7 +51,7 @@ $(document).ready
         if
         (
           ($("input[name=identifier]").val () == null || $("input[name=identifier]").val () == "") && ($("input[name=name]").val () == null || $("input[name=name]").val () == "") &&
-          ($("input[name=investigationLine]").val () == null || $("input[name=investigationLine]").val () == "") && ($("input[name=calification]").val () == null || $("input[name=calification]").val () == "") &&
+          $("select[name=investigationLine]").val () == 0 && ($("input[name=calification]").val () == null || $("input[name=calification]").val () == "") &&
           ($("input[name=addedDate]").val () == null || $("input[name=addedDate]").val () == "") && ($("input[name=quota]").val () == null || $("input[name=quota]").val () == "") &&
           ($("input[name=adviser-name]").val () == null || $("input[name=adviser-name]").val () == "")
         )
@@ -70,31 +70,37 @@ $(document).ready
             {
               if (data != null)
               {
-              var size = data.length;
-              $("form[name=filter-form]") [0].reset ();
-              $("#table-read").find ("tr:gt(0)").remove ();
-              console.log ("Package sent");
-              console.log ("Dataset:");
-              console.log (data);
-              var newRow = "";
-              var newFilterButtons ="<tr id = 'open-filters'><td colspan = '7'><div class = 'col-xs-12 col-sm-12 col-md-12 col-lg-12' id = 'button-main-div'><div class = 'container button-container' id = 'button-container-2'><div class = 'main row'><div class = 'col-xs-6 col-sm-6 col-md-6 col-lg-6'><input class = 'btn btn-lg btn-success button-width center-block' type = 'button' value = 'Filter' name = 'filter'></div><div class = 'col-xs-6 col-sm-6 col-md-6 col-lg-6'><input class = 'btn btn-lg btn-danger button-width center-block' type = 'button' value = 'Back' name = 'back-to-index' onclick = 'document.location=" + '"../public/index.php"' + "'/></div></div></div></div></td></tr>";
+                var size = data.length;
+                $("form[name=filter-form]") [0].reset ();
+                $(".rm").remove ();
+                console.log ("Package sent");
+                console.log ("Dataset:");
+                console.log (data);
+                var newRows = "";
+                var tableTiles = "<tr id = 'table-titles' class = 'rm'><td>Identifier</td><td>Name</td><td>Investigation line</td><td>Calification</td><td>Added date</td><td>Adviser name</td><td>Quota</td></tr>";
 
-              for (var i = 0; i < size; i ++)
-              {
-                newRow += "<tr>";
-                newRow += "<td>" + data [i].identifier + "</td>";
-                newRow += "<td>" + data [i].name + "</td>";
-                newRow += "<td>" + data [i].investigationLine + "</td>";
-                newRow += "<td>" + data [i].calification + "</td>";
-                newRow += "<td>" + data [i].addedDate + "</td>";
-                newRow += "<td>" + data [i].adviserName + "</td>";
-                newRow += "<td>" + data [i].quota + "</td>";
-                newRow += "</tr>";
+                for (var i = 0; i < size; i ++)
+                {
+                  newRows += "<tr class = 'rm'>";
+                  newRows += "<td>" + data [i].identifier + "</td>";
+                  newRows += "<td>" + data [i].name + "</td>";
+                  newRows += "<td>" + data [i].investigationLine + "</td>";
+                  newRows += "<td>" + data [i].calification + "</td>";
+                  newRows += "<td>" + data [i].addedDate + "</td>";
+                  newRows += "<td>" + data [i].adviserName + "</td>";
+                  newRows += "<td>" + data [i].quota + "</td>";
+                  newRows += "</tr>";
                 }
-              }else{alert ("nada");}
 
-              $("#table-read").append (newRow);
-              $("#table-read").append (newFilterButtons);
+                $("#table-read").prepend (newRows);
+                $(".rm").css ("display", "none");
+                $(".rm").fadeIn (300);
+                $("#table-read").prepend (tableTiles);
+              }
+              else
+              {
+                alert ("nada");
+              }
             },
             error: function (data)
             {

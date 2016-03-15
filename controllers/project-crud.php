@@ -1,18 +1,21 @@
 <?php
   require_once ('../models/database.php');
-  require ('../models/project.php');
+  require_once ('../models/project.php');
+  require_once ('adviser-crud.php');
+  require_once ('investigationLine-crud.php');
 
-  function createProject ($name, $investigationLine, $calification, $addedDate, $adviserIdentifier)
+  function createProject ($name, $calification, $addedDate, $adviserIdentifier, $investigationLine)
   {
     $databaseObject = new Database ();
     $connection = $databaseObject->connect ();
-    $projectObject = new Project ("", $name, $investigationLine, $calification, $addedDate, "", $adviserIdentifier);
+    $projectObject = new Project ("", $name, $calification, $addedDate, "", $adviserIdentifier, $investigationLine);
+
     $query = $connection->prepare
     (
       'CALL spSetProject
       (
-        "'.$projectObject->getName ().'", "'.$projectObject->getInvestigationLine ().'", '.$projectObject->getCalification ().', "'.$projectObject->getAddedDate ().'",
-        '.$projectObject->getAdviserIdentifier ().'
+        "'.$projectObject->getName ().'", '.$projectObject->getCalification ().', "'.$projectObject->getAddedDate ().'",
+        '.$projectObject->getAdviserIdentifier ().', '.$projectObject->getInvestigationLineIdentifier ().'
       )'
     );
 
@@ -36,7 +39,7 @@
     $databaseObject = null;
   }
 
-  function readProject ()
+  function readProjects ()
   {
     $databaseObject = new Database ();
     $connection = $databaseObject->connect ();
@@ -44,18 +47,26 @@
     $query->execute ();
     $result = $query->fetchAll ();
     $i = 0;
-    $projectsObjectArray = null;
+    $data = array ();
+    $projectObjectsArray = null;
+    $adviserNamesArray = null;
+    $investigationLineNamesArray = null;
 
     foreach ($result as $key => $value)
     {
-      $projectsObjectArray [$i] = new Project ($value ['identifier'], $value ['name'], $value ['investigationLine'], $value ['calification'], $value ['addedDate'], $value ['quota'], $value ['adviserIdentifier']);
+      $projectObjectsArray [$i] = new Project ($value ['identifier'], $value ['name'], $value ['calification'], $value ['addedDate'], $value ['quota'], $value ['adviserIdentifier'], $value ['investigationLineIdentifier']);
+      $adviserNamesArray [$i] = readSpecificAdviserByIdentifier ($projectObjectsArray [$i]->getAdviserIdentifier ());
+      $investigationLineNamesArray [$i] = readSpecificInvestigationLineByIdentifier ($projectObjectsArray [$i]->getInvestigationLineIdentifier ());
       $i ++;
     }
 
     $query->closeCursor ();
     $connection = null;
     $databaseObject = null;
-    return $projectsObjectArray;
+    $data ['projects'] = $projectObjectsArray;
+    $data ['advisers'] = $adviserNamesArray;
+    $data ['investigationLines'] = $investigationLineNamesArray;
+    return $data;
   }
 
   function readSpecificProject ($name)
@@ -65,17 +76,17 @@
     $query = $connection->prepare ('CALL spGetProjectByName ("'.$name.'")');
     $query->execute ();
     $result = $query->fetchAll ();
-    $projectsObject = null;
+    $projectObject = null;
 
     foreach ($result as $key => $value)
     {
-      $projectsObject = new Project ($value ['identifier'], $name, $value ['investigationLine'], $value ['calification'], $value ['addedDate'], $value ['quota'], $value ['adviserIdentifier']);
+      $projectObject = new Project ($value ['identifier'], $name, $value ['calification'], $value ['addedDate'], $value ['quota'], $value ['adviserIdentifier'], $value ['investigationLineIdentifier']);
     }
 
     $query->closeCursor ();
     $connection = null;
     $databaseObject = null;
-    return $projectsObject;
+    return $projectObject;
   }
 
   function readSimilarProjects ($sql)
@@ -85,19 +96,19 @@
     $query = $connection->prepare ($sql);
     $query->execute ();
     $result = $query->fetchAll ();
-    $projectsObjectArray = null;
+    $projectObjectsArray = null;
     $i = 0;
 
     foreach ($result as $key => $value)
     {
-      $projectsObjectArray [$i] = new Project ($value ['identifier'], $value ['name'], $value ['investigationLine'], $value ['calification'], $value ['addedDate'], $value ['quota'], $value ['adviserIdentifier']);
+      $projectObjectsArray [$i] = new Project ($value ['identifier'], $value ['name'], $value ['calification'], $value ['addedDate'], $value ['quota'], $value ['adviserIdentifier'], $value ['investigationLineName']);
       $i ++;
     }
 
     $query->closeCursor ();
     $connection = null;
     $databaseObject = null;
-    return $projectsObjectArray;
+    return $projectObjectsArray;
   }
 
   function updateProject ()
