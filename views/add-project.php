@@ -2,7 +2,7 @@
   require ('../public/init.php');
   require ('../controllers/author-crud.php');
   require ('../controllers/adviser-crud.php');
-  require ('../controllers/investigationLine-crud.php');
+  require ('../controllers/investigation-line-crud.php');
 ?>
 
 <!DOCTYPE HTML>
@@ -81,7 +81,7 @@
             <div class = "container" id = "project-2">
               <div class = "main row">
                 <div class = "col-xs-12 col-sm-12 col-md-12 col-lg-12 form-label" id = "authors-label">
-                  <label>Authors (multiselection [Ctrl + click]):</label>
+                  <label>Authors (multiselection [Ctrl + click]). Select maximum 3:</label>
                 </div>
                 <div class = "col-xs-12 col-sm-12 col-md-12 col-lg-12 div-select">
                   <select class = "form-control" multiple = "multiple" name = "authors[]" id = "authorsSelect">

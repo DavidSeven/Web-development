@@ -2,6 +2,18 @@
   require_once ('../models/database.php');
   require_once ('../models/adviser.php');
 
+  function createAdviser ($name, $lastName)
+  {
+    $databaseObject = new Database ();
+    $connection = $databaseObject->connect ();
+    $adviserObject = new Adviser ("", $name, $lastName);
+    $query = $connection->prepare ('CALL spSetAdviser ("'.$adviserObject->getName ().'", "'.$adviserObject->getLastName ().'")');
+    $query->execute ();
+    $query->closeCursor ();
+    $connection = null;
+    $databaseObject = null;
+  }
+
   function readAdvisers ()
   {
     $databaseObject = new Database ();

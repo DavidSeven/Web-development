@@ -2,7 +2,7 @@
   require_once ('../models/database.php');
   require_once ('../models/project.php');
   require_once ('adviser-crud.php');
-  require_once ('investigationLine-crud.php');
+  require_once ('investigation-line-crud.php');
 
   function createProject ($name, $calification, $addedDate, $adviserIdentifier, $investigationLine)
   {

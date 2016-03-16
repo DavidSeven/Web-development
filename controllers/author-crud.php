@@ -2,6 +2,18 @@
   require_once ('../models/database.php');
   require_once ('../models/author.php');
 
+  function createAuthor ($name, $lastName)
+  {
+    $databaseObject = new Database ();
+    $connection = $databaseObject->connect ();
+    $authorObject = new Author ("", $name, $lastName);
+    $query = $connection->prepare ('CALL spSetAuthor ("'.$authorObject->getName ().'", "'.$authorObject->getLastName ().'")');
+    $query->execute ();
+    $query->closeCursor ();
+    $connection = null;
+    $databaseObject = null;
+  }
+
   function readAuthors ()
   {
     $databaseObject = new Database ();

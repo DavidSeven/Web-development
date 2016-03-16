@@ -21,7 +21,7 @@
     <div class = "container">
       <section class = "main row-fluid">
         <section class = "col-xs-12 col-sm-6 col-md-6 col-lg-3">
-          <a href = "../views/add-project.php">
+          <a id = "create" href = "#">
             <div class = "circle container-fluid" id = "link-to-create">
               <img src = "images/c.png" alt = "Crear">
             </div>
@@ -49,6 +49,37 @@
           </a>
         </section>
       </section>
+      <div class = "container" id = "container-create">
+        <section class = "main row-fluid">
+          <div class = "col-xs-12 col-sm-12 col-md-6 col-lg-3">
+            <a href = "../views/add-project.php">
+              <div class = "circle container-fluid" id = "link-to-project-create">
+                <img src = "images/p.jpg" alt = "Crear">
+              </div>
+            </a>
+          </div>
+          <div class = "col-xs-12 col-sm-12 col-md-6 col-lg-3">
+            <a href = "../views/add-adviser.php">
+              <div class = "circle container-fluid" id = "link-to-adviser-create">
+                <img src = "images/a.jpg" alt = "Crear">
+              </div>
+            </a>
+          </div>
+          <div class = "col-xs-12 col-sm-12 col-md-6 col-lg-3">
+            <a href = "../views/add-author.php">
+              <div class = "circle container-fluid" id = "link-to-author-create">
+                <img src = "images/a.jpg" alt = "Crear">
+              </div>
+            </a>
+          </div>
+          <div class = "col-xs-12 col-sm-12 col-md-6 col-lg-3">
+            <a href = "../views/add-investigation-line.php">
+              <div class = "circle container-fluid" id = "link-to-investigation-line-create">
+                <img src = "images/l.jpg" alt = "Crear">
+              </div>
+            </a>
+          </div>
+        </section>
     </div>
   </body>
 </html>

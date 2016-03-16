@@ -209,3 +209,34 @@ header h1
 {
   height: 38px;
 }
+
+#container-create
+{
+  display: none;
+}
+
+#link-to-project-create, #link-to-adviser-create, #link-to-author-create, #link-to-investigation-line-create
+{
+  display: none;
+  -webkit-transition: transform 1s;
+  transition: transform 1s;
+}
+
+#link-to-project-create:hover, #link-to-adviser-create:hover, #link-to-author-create:hover, #link-to-investigation-line-create:hover
+{
+  transform: translate(5%, -30%);
+}
+
+.panel-color-ad
+{
+  background-color: rgb(55, 55, 55);
+  border-radius: 7px;
+  height: 350px;
+}
+
+.panel-color-il
+{
+  background-color: rgb(55, 55, 55);
+  border-radius: 7px;
+  height: 250px;
+}

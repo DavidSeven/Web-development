@@ -99,7 +99,7 @@ $(document).ready
               }
               else
               {
-                alert ("nada");
+                alert ("Nothing");
               }
             },
             error: function (data)

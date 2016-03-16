@@ -38,15 +38,13 @@ $(document).ready
         {
             if ($("#authorsSelect option:selected").length > 3 || $("#authorsSelect option:selected").length < 1)
             {
-              alert ("Please, check this:\nMinimum: 1 authors\nMaximum: 3 authors\n");
               for(i = 0; i < 3; i ++)
               {
                 $("#authorsSelect").fadeTo ('slow', 0.1).fadeTo ('slow', 1.0);
               }
             }
             if ($("select[name=advisers]").val () == 0)
-            {
-              alert ("¡Choose an adviser!");
+            {              
               for(i = 0; i < 3; i ++)
               {
                 $("select[name=advisers]").fadeTo ('slow', 0.1).fadeTo ('slow', 1.0);
