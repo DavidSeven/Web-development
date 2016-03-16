@@ -91,7 +91,6 @@
     for ($i = 0; $i < $size; $i ++)
     {
       $adviserObject = readSpecificAdviserByIdentifier ($projectObjectsArray [$i]->getAdviserIdentifier ());
-      //$investigationLineObject = readSpecificInvestigationLineByIdentifier ();
 
       $jsonData [$i] = array
       (

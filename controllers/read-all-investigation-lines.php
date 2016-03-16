@@ -7,12 +7,15 @@
   $size = sizeof ($investigationLineObjectsArray);
   $jsonData = null;
 
-  for ($i = 0; $i < $size; $i ++)
+  if ($investigationLineObjectsArray != null)
   {
-    $jsonData [$i] = array
-    (
-      'identifier' => $investigationLineObjectsArray [$i]->getIdentifier (), 'name' => $investigationLineObjectsArray [$i]->getName ()
-    );
+    for ($i = 0; $i < $size; $i ++)
+    {
+      $jsonData [$i] = array
+      (
+        'identifier' => $investigationLineObjectsArray [$i]->getIdentifier (), 'name' => $investigationLineObjectsArray [$i]->getName ()
+      );
+    }
   }
 
   header ('Content-type: application/json; charset=utf-8');

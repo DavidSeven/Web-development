@@ -4,6 +4,7 @@ $(document).ready
   {
     var menuCreateState = false;
     var menuReadState = false;
+    var menuUpdateState = false;
 
     $("#create").click
     (
@@ -19,6 +20,15 @@ $(document).ready
             $("#link-to-investigation-line-read").css ("display", "none");
             $("#container-read").css ("display", "none");
             menuReadState = false;
+          }
+          else if (menuUpdateState)
+          {
+            $("#link-to-project-update").css ("display", "none");
+            $("#link-to-adviser-update").css ("display", "none");
+            $("#link-to-author-update").css ("display", "none");
+            $("#link-to-investigation-line-update").css ("display", "none");
+            $("#container-update").css ("display", "none");
+            menuUpdateState = false;
           }
 
           $("#h1-title").fadeOut
@@ -109,6 +119,15 @@ $(document).ready
             $("#container-create").css ("display", "none");
             menuCreateState = false;
           }
+          else if (menuUpdateState)
+          {
+            $("#link-to-project-update").css ("display", "none");
+            $("#link-to-adviser-update").css ("display", "none");
+            $("#link-to-author-update").css ("display", "none");
+            $("#link-to-investigation-line-update").css ("display", "none");
+            $("#container-update").css ("display", "none");
+            menuUpdateState = false;
+          }
 
           $("#h1-title").fadeOut
           (
@@ -182,6 +201,105 @@ $(document).ready
         }
       }
     );
+
+    $("#update").click
+    (
+      function ()
+      {
+        if (!menuUpdateState)
+        {
+          if (menuReadState)
+          {
+            $("#link-to-project-read").css ("display", "none");
+            $("#link-to-adviser-read").css ("display", "none");
+            $("#link-to-author-read").css ("display", "none");
+            $("#link-to-investigation-line-read").css ("display", "none");
+            $("#container-read").css ("display", "none");
+            menuReadState = false;
+          }
+          else if (menuCreateState)
+          {
+            $("#link-to-project-create").css ("display", "none");
+            $("#link-to-adviser-create").css ("display", "none");
+            $("#link-to-author-create").css ("display", "none");
+            $("#link-to-investigation-line-create").css ("display", "none");
+            $("#container-create").css ("display", "none");
+            menuCreateState = false;
+          }
+
+          $("#h1-title").fadeOut
+          (
+            200, function ()
+            {
+              $("#h1-title").html ("Menu update");
+              $("#h1-title").fadeIn (200);
+            }
+          );
+
+          $("#container-update").fadeIn
+          (
+            500, function ()
+            {
+              $("#link-to-investigation-line-update").fadeIn
+              (
+                300, function ()
+                {
+                  $("#link-to-author-update").fadeIn
+                  (
+                    300, function ()
+                    {
+                      $("#link-to-adviser-update").fadeIn
+                      (
+                        300, function ()
+                        {
+                          $("#link-to-project-update").fadeIn (300);
+                        }
+                      );
+                    }
+                  );
+                }
+              );
+            }
+          );
+
+          var scrollPosition = $("#container-update").offset ().top;
+
+          $("html, body").animate
+          (
+            {
+              scrollTop: scrollPosition
+            }, 2000
+          );
+
+          menuUpdateState = true;
+        }
+        else
+        {
+          $("#container-update").fadeOut
+          (
+            300, function ()
+            {
+                $("#link-to-project-update").css ("display", "none");
+                $("#link-to-adviser-update").css ("display", "none");
+                $("#link-to-author-update").css ("display", "none");
+                $("#link-to-investigation-line-update").css ("display", "none");
+            }
+          );
+
+          $("#h1-title").fadeOut
+          (
+            200, function ()
+            {
+              $("#h1-title").html ("Degree works");
+              $("#h1-title").fadeIn (200);
+            }
+          );
+
+          menuUpdateState = false;
+        }
+      }
+    );
+
 
     $("header").css
     (

@@ -35,14 +35,14 @@
           </a>
         </section>
         <section class = "col-xs-12 col-sm-6 col-md-6 col-lg-3">
-          <a href = "#">
+          <a id = "update" href = "#">
             <div class = "circle container-fluid" id = "link-to-update">
               <img src = "images/u.jpg" alt = "Actualizar">
             </div>
           </a>
         </section>
         <section class = "col-xs-12 col-sm-6 col-md-6 col-lg-3">
-          <a href = "#">
+          <a id = "delete" href = "#">
             <div class = "circle container-fluid" id = "link-to-delete">
               <img src = "images/d.jpg" alt = "Eliminar" text-align = "center">
             </div>
@@ -107,6 +107,38 @@
           <div class = "col-xs-12 col-sm-6 col-md-6 col-lg-3">
             <a href = "../views/read-investigation-lines.php">
               <div class = "circle-2 container-fluid" id = "link-to-investigation-line-read">
+                <img src = "images/l.jpg" alt = "Crear">
+              </div>
+            </a>
+          </div>
+        </section>
+      </div>
+      <div class = "container" id = "container-update">
+        <section class = "main row-fluid">
+          <div class = "col-xs-12 col-sm-6 col-md-6 col-lg-3">
+            <a href = "../views/update-projects.php">
+              <div class = "circle-2 container-fluid" id = "link-to-project-update">
+                <img src = "images/p.jpg" alt = "Crear">
+              </div>
+            </a>
+          </div>
+          <div class = "col-xs-12 col-sm-6 col-md-6 col-lg-3">
+            <a href = "../views/update-advisers.php">
+              <div class = "circle-2 container-fluid" id = "link-to-adviser-update">
+                <img src = "images/a.jpg" alt = "Crear">
+              </div>
+            </a>
+          </div>
+          <div class = "col-xs-12 col-sm-6 col-md-6 col-lg-3">
+            <a href = "../views/update-authors.php">
+              <div class = "circle-2 container-fluid" id = "link-to-author-update">
+                <img src = "images/a.jpg" alt = "Crear">
+              </div>
+            </a>
+          </div>
+          <div class = "col-xs-12 col-sm-6 col-md-6 col-lg-3">
+            <a href = "../views/update-investigation-lines.php">
+              <div class = "circle-2 container-fluid" id = "link-to-investigation-line-update">
                 <img src = "images/l.jpg" alt = "Crear">
               </div>
             </a>

@@ -229,13 +229,14 @@ header h1
   height: 38px;
 }
 
-#container-create, #container-read
+#container-create, #container-read, #container-update
 {
   display: none;
 }
 
 #link-to-project-create, #link-to-adviser-create, #link-to-author-create, #link-to-investigation-line-create,
-#link-to-project-read, #link-to-adviser-read, #link-to-author-read, #link-to-investigation-line-read
+#link-to-project-read, #link-to-adviser-read, #link-to-author-read, #link-to-investigation-line-read,
+#link-to-project-update, #link-to-adviser-update, #link-to-author-update, #link-to-investigation-line-update
 {
   display: none;
   -webkit-transition: transform 1s;
@@ -243,7 +244,8 @@ header h1
 }
 
 #link-to-project-create:hover, #link-to-adviser-create:hover, #link-to-author-create:hover, #link-to-investigation-line-create:hover,
-#link-to-project-read:hover, #link-to-adviser-read:hover, #link-to-author-read:hover, #link-to-investigation-line-read:hover
+#link-to-project-read:hover, #link-to-adviser-read:hover, #link-to-author-read:hover, #link-to-investigation-line-read:hover,
+#link-to-project-update:hover, #link-to-adviser-update:hover, #link-to-author-update:hover, #link-to-investigation-line-update:hover
 {
   transform: translate(5%, 10%);
 }
