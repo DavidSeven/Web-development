@@ -119,7 +119,6 @@ header h1
   position: absolute;
   left:35%; top:30%;
   background: white no-repeat center 0;
-  /*margin:-50px 0 0 -50px;*/
 }
 
 #h2-title
@@ -210,19 +209,21 @@ header h1
   height: 38px;
 }
 
-#container-create
+#container-create, #container-read
 {
   display: none;
 }
 
-#link-to-project-create, #link-to-adviser-create, #link-to-author-create, #link-to-investigation-line-create
+#link-to-project-create, #link-to-adviser-create, #link-to-author-create, #link-to-investigation-line-create,
+#link-to-project-read, #link-to-adviser-read, #link-to-author-read, #link-to-investigation-line-read
 {
   display: none;
   -webkit-transition: transform 1s;
   transition: transform 1s;
 }
 
-#link-to-project-create:hover, #link-to-adviser-create:hover, #link-to-author-create:hover, #link-to-investigation-line-create:hover
+#link-to-project-create:hover, #link-to-adviser-create:hover, #link-to-author-create:hover, #link-to-investigation-line-create:hover,
+#link-to-project-read:hover, #link-to-adviser-read:hover, #link-to-author-read:hover, #link-to-investigation-line-read:hover
 {
   transform: translate(5%, -30%);
 }
