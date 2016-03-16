@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 15, 2016 at 06:01 AM
+-- Generation Time: Mar 16, 2016 at 07:06 PM
 -- Server version: 10.1.9-MariaDB
 -- PHP Version: 5.5.30
 
@@ -48,11 +48,11 @@ select identifier from investigationLine where name = spName$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `spGetProjectByName` (IN `spName` VARCHAR(100))  NO SQL
 select identifier, calification, addedDate, quota, adviserIdentifier, investigationLineIdentifier from project where name = spName$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `spSetAdviser` (IN `spIdentifier` INT(11) UNSIGNED, IN `spName` VARCHAR(20) CHARSET utf8, IN `spLastName` VARCHAR(20) CHARSET utf8)  NO SQL
-insert into adviser (identifier, name, lastName) values (spIdentifier, spName, spLastName)$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spSetAdviser` (IN `spName` VARCHAR(20), IN `spLastName` VARCHAR(20))  NO SQL
+insert into adviser (name, lastName) values (spName, spLastName)$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `spSetAuthor` (IN `spIdentifier` INT(11) UNSIGNED, IN `spName` VARCHAR(20) CHARSET utf8, IN `spLastName` VARCHAR(20) CHARSET utf8)  NO SQL
-insert into author (identifier, name, lastName) values (spIdentifier, spName, spLastName)$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spSetAuthor` (IN `spName` VARCHAR(20), IN `spLastName` VARCHAR(20))  NO SQL
+insert into author (name, lastName) values (spName, spLastName)$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `spSetIncludes` (IN `spAuthorIdentifier` INT(11) UNSIGNED, IN `spProjectIdentifier` INT(11) UNSIGNED)  NO SQL
 insert into includes (authorIdentifier, projectIdentifier) values (spAuthorIdentifier, spProjectIdentifier)$$
@@ -85,10 +85,11 @@ CREATE TABLE `adviser` (
 --
 
 INSERT INTO `adviser` (`identifier`, `name`, `lastName`) VALUES
-(1, 'Luis Esteban', 'Garcia Cuida'),
-(2, 'Carlos Daniel', 'Perez Montaner'),
-(3, 'Luis Daniel', 'Gomez Ortiz'),
-(4, 'Juan David', 'Morales Sejin');
+(1, 'Mary Angel', 'Gonzales Lopez'),
+(2, 'Carlos Manuel', 'Sanchez Mendoza'),
+(3, 'Argemiro', 'Martinez Medrano'),
+(4, 'Luis Esteban', 'Garcia Cuida'),
+(5, 'Samuel David', 'Narvaez Perez');
 
 -- --------------------------------------------------------
 
@@ -107,10 +108,11 @@ CREATE TABLE `author` (
 --
 
 INSERT INTO `author` (`identifier`, `name`, `lastName`) VALUES
-(1, 'Juan Carlos', 'Morales Perez'),
-(2, 'Luis David', 'Suarez Morales'),
-(3, 'Luis Fernando', 'Perez Martinez'),
-(4, 'Jose David', 'Garcia Rodriguez');
+(1, 'Jose David', 'Garcia Rodriguez'),
+(2, 'Mario Alberto', 'Anaya Diaz'),
+(3, 'Santiago Ernesto', 'Bedoya Conde'),
+(4, 'Moises David', 'Lopez Suarez'),
+(5, 'Carlos Alberto', 'Gomez Pajaro');
 
 -- --------------------------------------------------------
 
@@ -128,9 +130,20 @@ CREATE TABLE `includes` (
 --
 
 INSERT INTO `includes` (`authorIdentifier`, `projectIdentifier`) VALUES
-(1, 1),
-(2, 1),
-(3, 2);
+(1, 3),
+(1, 4),
+(2, 3),
+(2, 6),
+(3, 3),
+(3, 5),
+(3, 6),
+(3, 7),
+(4, 5),
+(4, 6),
+(4, 7),
+(5, 4),
+(5, 5),
+(5, 7);
 
 -- --------------------------------------------------------
 
@@ -148,13 +161,15 @@ CREATE TABLE `investigationLine` (
 --
 
 INSERT INTO `investigationLine` (`identifier`, `name`) VALUES
-(4, 'Big data'),
-(3, 'Computing'),
-(7, 'Database'),
-(2, 'Machine learning'),
-(1, 'Programming I'),
-(6, 'Programming II'),
-(5, 'Web development');
+(15, 'Big data'),
+(11, 'Machine learning'),
+(16, 'Professional design'),
+(9, 'Programming I'),
+(10, 'Programming II'),
+(14, 'Software architecture'),
+(13, 'Software engineering'),
+(12, 'Telematics'),
+(17, 'Web development');
 
 -- --------------------------------------------------------
 
@@ -177,8 +192,11 @@ CREATE TABLE `project` (
 --
 
 INSERT INTO `project` (`identifier`, `name`, `calification`, `addedDate`, `quota`, `adviserIdentifier`, `investigationLineIdentifier`) VALUES
-(1, 'Objects array', 3, '2016-03-04', 1, 1, 1),
-(2, 'Bidimensionals array', 2, '2016-03-21', 2, 3, 1);
+(3, 'Logistic regression', 4, '2016-03-23', 0, 3, 11),
+(4, 'Information retrieval', 5, '2015-11-18', 1, 4, 15),
+(5, 'Objects array', 3, '2015-06-08', 0, 5, 9),
+(6, 'Bidimensionals array', 2, '2014-12-02', 0, 2, 9),
+(7, 'Optimal path', 5, '2015-11-09', 0, 1, 12);
 
 --
 -- Indexes for dumped tables
@@ -224,15 +242,25 @@ ALTER TABLE `project`
 --
 
 --
+-- AUTO_INCREMENT for table `adviser`
+--
+ALTER TABLE `adviser`
+  MODIFY `identifier` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `author`
+--
+ALTER TABLE `author`
+  MODIFY `identifier` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
 -- AUTO_INCREMENT for table `investigationLine`
 --
 ALTER TABLE `investigationLine`
-  MODIFY `identifier` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `identifier` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT for table `project`
 --
 ALTER TABLE `project`
-  MODIFY `identifier` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `identifier` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- Constraints for dumped tables
 --
@@ -241,15 +269,15 @@ ALTER TABLE `project`
 -- Constraints for table `includes`
 --
 ALTER TABLE `includes`
-  ADD CONSTRAINT `includes_ibfk_1` FOREIGN KEY (`authorIdentifier`) REFERENCES `author` (`identifier`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `includes_ibfk_2` FOREIGN KEY (`projectIdentifier`) REFERENCES `project` (`identifier`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `includes_ibfk_2` FOREIGN KEY (`projectIdentifier`) REFERENCES `project` (`identifier`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `includes_ibfk_3` FOREIGN KEY (`authorIdentifier`) REFERENCES `author` (`identifier`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `project`
 --
 ALTER TABLE `project`
-  ADD CONSTRAINT `project_ibfk_1` FOREIGN KEY (`adviserIdentifier`) REFERENCES `adviser` (`identifier`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `project_ibfk_2` FOREIGN KEY (`investigationLineIdentifier`) REFERENCES `investigationLine` (`identifier`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `project_ibfk_2` FOREIGN KEY (`investigationLineIdentifier`) REFERENCES `investigationLine` (`identifier`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `project_ibfk_3` FOREIGN KEY (`adviserIdentifier`) REFERENCES `adviser` (`identifier`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -35,4 +35,26 @@
     $databaseObject = null;
     return $authorObjectsArray;
   }
+
+  function readSimilarAuthors ($sql)
+  {
+    $databaseObject = new Database ();
+    $connection = $databaseObject->connect ();
+    $query = $connection->prepare ($sql);
+    $query->execute ();
+    $result = $query->fetchAll ();
+    $adviserObjectsArray = null;
+    $i = 0;
+
+    foreach ($result as $key => $value)
+    {
+      $adviserObjectsArray [$i] = new Author ($value ['identifier'], $value ['name'], $value ['lastName']);
+      $i ++;
+    }
+
+    $query->closeCursor ();
+    $connection = null;
+    $databaseObject = null;
+    return $adviserObjectsArray;
+  }
 ?>

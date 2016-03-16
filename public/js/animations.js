@@ -21,6 +21,15 @@ $(document).ready
             menuReadState = false;
           }
 
+          $("#h1-title").fadeOut
+          (
+            200, function ()
+            {
+              $("#h1-title").html ("Menu create");
+              $("#h1-title").fadeIn (200);
+            }
+          );
+
           $("#container-create").fadeIn
           (
             500, function ()
@@ -71,6 +80,15 @@ $(document).ready
             }
           );
 
+          $("#h1-title").fadeOut
+          (
+            200, function ()
+            {
+              $("#h1-title").html ("Degree works");
+              $("#h1-title").fadeIn (200);
+            }
+          );
+
           menuCreateState = false;
         }
       }
@@ -91,6 +109,15 @@ $(document).ready
             $("#container-create").css ("display", "none");
             menuCreateState = false;
           }
+
+          $("#h1-title").fadeOut
+          (
+            200, function ()
+            {
+              $("#h1-title").html ("Menu read");
+              $("#h1-title").fadeIn (200);
+            }
+          );
 
           $("#container-read").fadeIn
           (
@@ -139,6 +166,15 @@ $(document).ready
                 $("#link-to-adviser-read").css ("display", "none");
                 $("#link-to-author-read").css ("display", "none");
                 $("#link-to-investigation-line-read").css ("display", "none");
+            }
+          );
+
+          $("#h1-title").fadeOut
+          (
+            200, function ()
+            {
+              $("#h1-title").html ("Degree works");
+              $("#h1-title").fadeIn (200);
             }
           );
 

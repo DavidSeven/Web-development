@@ -55,4 +55,26 @@
     $databaseObject = null;
     return $investigationLineObject;
   }
+
+  function readSimilarInvestigationLines ($sql)
+  {
+    $databaseObject = new Database ();
+    $connection = $databaseObject->connect ();
+    $query = $connection->prepare ($sql);
+    $query->execute ();
+    $result = $query->fetchAll ();
+    $investigationLineObjectsArray = null;
+    $i = 0;
+
+    foreach ($result as $key => $value)
+    {
+      $investigationLineObjectsArray [$i] = new InvestigationLine ($value ['identifier'], $value ['name']);
+      $i ++;
+    }
+
+    $query->closeCursor ();
+    $connection = null;
+    $databaseObject = null;
+    return $investigationLineObjectsArray;
+  }
 ?>

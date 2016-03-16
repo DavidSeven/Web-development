@@ -6,7 +6,7 @@
 <html>
 	<head>
 		<?php
-			head ('Read adviser', 'other');
+			head ('Read investigation line', 'other');
       javascript ('undefined');
       loader ();
 		?>
@@ -14,7 +14,7 @@
   <body>
     <header id = "form-header">
       <div class = "container">
-        <h2 id = "h2-title">Read advisers</h2>
+        <h2 id = "h2-title">Read investigation line</h2>
       </div>
     </header>
     <div class = "container">
@@ -24,11 +24,9 @@
             <tr id = "table-titles" class = "rm">
         	    <td>Identifier</td>
               <td>Name</td>
-              <td>Last name</td>
     	      </tr>
-
             <tr id = "open-filters">
-              <td colspan = "3">
+              <td colspan = "2">
                 <div class = "col-xs-12 col-sm-12 col-md-12 col-lg-12" id = "button-main-div">
                   <div class = "container button-container" id = "button-container-2">
                     <div class = "main row">
@@ -44,10 +42,10 @@
                </td>
             </tr>
             <tr id = "filters-title">
-              <td colspan = "3">Filters:</td>
+              <td colspan = "2">Filters:</td>
             </tr>
             <tr id = "filters">
-              <td colspan = "3">
+              <td colspan = "2">
                 <form name = "filter-form">
                   <div class = "container">
                     <div class = "main row-fluid">
@@ -57,11 +55,7 @@
                       </div>
                       <div class = "col-xs-12 col-sm-12 col-md-6 col-lg-6 filters-padding">
                         <label>Name</label>
-                        <input class = "form-control center-block" type = "text" name = "name" placeholder = "Name"/>
-                      </div>
-                      <div class = "col-xs-12 col-sm-12 col-md-6 col-lg-6 filters-padding">
-                        <label>Last name</label>
-                        <input class = "form-control center-block" type = "text" name = "last-name" placeholder = "Last name"/>
+                        <input class = "form-control center-block" type = "text" name = "name" placeholder = "Description"/>
                       </div>
                     </div>
                    </div>
@@ -69,7 +63,7 @@
               </td>
             </tr>
             <tr id = "button-filters">
-              <td colspan = "3">
+              <td colspan = "2">
                 <div class = "col-xs-12 col-sm-12 col-md-12 col-lg-12">
                   <div class = "container button-container">
                     <div class = "main row">
@@ -88,6 +82,6 @@
         </div>
       </div>
     </div>
-    <script src = "../public/js/read-adviser.js"></script>
+    <script src = "../public/js/read-investigation-line.js"></script>
   </body>
 </html>
