@@ -8,7 +8,26 @@ $(document).ready
       {
         if (e.target.nodeName == "A")
         {
-          alert (e.target.id);
+          var id = e.target.id;
+
+          $.ajax
+          ({
+            type: "post",
+            url: "../controllers/update-project.php",
+            data: {identifier: id},
+            encode: true,
+
+            success: function (data)
+            {
+              console.log (data);
+              window.location.href = "../views/update-specific-project.php";
+            },
+
+            error: function (data)
+            {
+              console.log (data);
+            }
+          });
         }
 
         console.log (e);
