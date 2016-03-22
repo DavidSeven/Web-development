@@ -15,9 +15,33 @@ $(document).ready
           console.log ("Package sent");
           console.log (data);
           console.log ("Identifier:" + data.identifier);
+
+          $.ajax
+          ({
+            type: "post",
+            url: "../controllers/read-specific-project-to-update.php",
+            data: {identifier: data.identifier},
+            encode: true,
+
+            success: function (data)
+            {
+              console.log ("Package sent");
+              console.log (data);
+              $("form[name=add-project-form]") [0].reset ();
+
+              var cadena = "project: " + data [0][0].name + "\ninclude: " + data [1][0].identifier + "\nauthor: " + data [2][0].name + "\nadviser: " + data [3][0].name + "\ninvestigation line: " + data [4][0].name;
+              alert (cadena);
+            },
+
+            error: function (data)
+            {
+              console.log ("Package unsent");
+            }
+          });
         }
         else
-        {console.log ("nada");
+        {
+          console.log ("Nothing");
           window.location.href = "update-projects.php";
         }
       },

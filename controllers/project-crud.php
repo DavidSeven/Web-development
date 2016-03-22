@@ -111,6 +111,28 @@
     return $projectObjectsArray;
   }
 
+  function readAllIncludesRelation ()
+  {
+    $databaseObject = new Database ();
+    $connection = $databaseObject->connect ();
+    $query = $connection->prepare ('CALL spGetAllIncludes ()');
+    $query->execute ();
+    $result = $query->fetchAll ();
+    $includesArray = null;
+    $i = 0;
+
+    foreach ($result as $key => $value)
+    {
+      $includesArray [$i] = array ($value ['authorIdentifier'], $value ['projectIdentifier']);
+      $i ++;
+    }
+
+    $query->closeCursor ();
+    $connection = null;
+    $databaseObject = null;
+    return $includesArray;
+  }
+
   function updateProject ()
   {}
 

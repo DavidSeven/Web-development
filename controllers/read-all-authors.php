@@ -1,9 +1,7 @@
 <?php
   require_once ('author-crud.php');
 
-  $sql = 'select * from author';
-
-  $authorObjectsArray = readSimilarAuthors ($sql);
+  $authorObjectsArray = readAuthors ();
   $size = sizeof ($authorObjectsArray);
   $jsonData = null;
 

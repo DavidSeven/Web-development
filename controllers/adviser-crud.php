@@ -26,7 +26,7 @@
 
     foreach ($result as $key => $value)
     {
-      $adviserObjectsArray [$i] = new Author ($value ['identifier'], $value ['name'], $value ['lastName']);
+      $adviserObjectsArray [$i] = new Adviser ($value ['identifier'], $value ['name'], $value ['lastName']);
       $i ++;
     }
 

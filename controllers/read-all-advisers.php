@@ -1,13 +1,11 @@
 <?php
   require_once ('adviser-crud.php');
 
-  $sql = 'select * from adviser';
-
-  $adviserObjectsArray = readSimilarAdvisers ($sql);
+  $adviserObjectsArray = readAdvisers ();
   $size = sizeof ($adviserObjectsArray);
   $jsonData = null;
 
-  if ($authorObjectsArray != null)
+  if ($adviserObjectsArray != null)
   {
     for ($i = 0; $i < $size; $i ++)
     {
