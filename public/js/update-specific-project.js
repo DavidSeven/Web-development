@@ -2,7 +2,33 @@ $(document).ready
 (
   function ()
   {
-    $("form[name=add-project-form]").submit
+    $.ajax
+    ({
+      type: "post",
+      url: "../controllers/update-project.php",
+      encode: true,
+
+      success: function (data)
+      {
+        if (!isNaN (data.identifier) && data.identifier != null)
+        {
+          console.log ("Package sent");
+          console.log (data);
+          console.log ("Identifier:" + data.identifier);
+        }
+        else
+        {console.log ("nada");
+          window.location.href = "update-projects.php";
+        }
+      },
+
+      error: function (data)
+      {
+        console.log ("Package unsent");
+        console.log (data);
+      }
+    });
+    /*$("form[name=add-project-form]").submit
     (
       function (event)
       {
@@ -44,7 +70,7 @@ $(document).ready
               }
             }
             if ($("select[name=advisers]").val () == 0)
-            {              
+            {
               for(i = 0; i < 3; i ++)
               {
                 $("select[name=advisers]").fadeTo ('slow', 0.1).fadeTo ('slow', 1.0);
@@ -103,6 +129,6 @@ $(document).ready
           }
         }
       }
-    );
+    );*/
   }
 );

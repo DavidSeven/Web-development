@@ -1,8 +1,5 @@
 <?php
   require ('../public/init.php');
-  require ('../controllers/author-crud.php');
-  require ('../controllers/adviser-crud.php');
-  require ('../controllers/investigation-line-crud.php');
 ?>
 
 <!DOCTYPE HTML>
@@ -61,7 +58,7 @@
                          <input class = "btn btn-lg btn-success button-width center-block" type = "button" value = "Continue" name = "accept">
                        </div>
                        <div class = "col-xs-6 col-sm-6 col-md-6 col-lg-6">
-    	  				         <input class = "btn btn-lg btn-danger button-width center-block" type = "reset" value = "Back" onclick = "document.location='../public/index.php'" />
+    	  				         <input class = "btn btn-lg btn-danger button-width center-block" type = "reset" value = "Back" onclick = "document.location='../views/update-projects.php'" />
                        </div>
                      </div>
                    </div>
@@ -90,7 +87,6 @@
                 </div>
                 <div class = "col-xs-12 col-sm-12 col-md-12 col-lg-12 move-select">
                   <select class = "form-control" name = "advisers">
-                    <option value = "0">Choose an adviser</option>
                   </select>
                   <div class = "col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <div class = "container button-container" id = "button-container-2">
@@ -110,6 +106,6 @@
         </div>
       </div>
     </div>
-    <script src = "../public/js/add-project.js"></script>
+    <script src = "../public/js/update-specific-project.js"></script>
   </body>
 </html>

@@ -20,6 +20,7 @@ $(document).ready
             success: function (data)
             {
               console.log (data);
+              console.log ("Identifier: " + data.identifier);
               window.location.href = "../views/update-specific-project.php";
             },
 
@@ -40,6 +41,7 @@ $(document).ready
       url: "../controllers/read-all-projects.php",
       data: $("form[name=filter-form]").serialize (),
       encode: true,
+
       success: function (data)
       {
         if (data != null)
@@ -77,6 +79,7 @@ $(document).ready
           alert ("Nothing");
         }
       },
+
       error: function (data)
       {
         console.log ("Package unsent");
@@ -159,7 +162,7 @@ $(document).ready
                 console.log ("Dataset:");
                 console.log (data);
                 var newRows = "";
-                var tableTiles = "<tr id = 'table-titles' class = 'rm'><td>Identifier</td><td>Name</td><td>Investigation line</td><td>Calification</td><td>Added date</td><td>Adviser name</td><td>Quota</td></tr>";
+                var tableTiles = "<tr id = 'table-titles' class = 'rm'><td>Identifier</td><td>Name</td><td>Investigation line</td><td>Calification</td><td>Added date</td><td>Adviser name</td><td>Quota</td><td>Option</td></tr>";
 
                 for (var i = 0; i < size; i ++)
                 {
@@ -171,6 +174,7 @@ $(document).ready
                   newRows += "<td>" + data [i].addedDate + "</td>";
                   newRows += "<td>" + data [i].adviserName + "</td>";
                   newRows += "<td>" + data [i].quota + "</td>";
+                  newRows += "<td><a id = '" + data [i].identifier + "' href = '#'>Update</a></td>";
                   newRows += "</tr>";
                 }
 

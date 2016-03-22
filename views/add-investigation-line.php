@@ -14,7 +14,7 @@
   <body>
     <header id = "form-header">
       <div class = "container">
-        <h2 id = "h2-title">Add author</h2>
+        <h2 id = "h2-title">Add investigation line</h2>
       </div>
     </header
     <div class = "container">
