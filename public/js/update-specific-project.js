@@ -5,7 +5,7 @@ $(document).ready
     $.ajax
     ({
       type: "post",
-      url: "../controllers/update-project.php",
+      url: "../controllers/pass-identifier.php",
       encode: true,
 
       success: function (data)
@@ -133,7 +133,7 @@ $(document).ready
               (
                 500, function ()
                 {
-                  window.location.href = "../views/update-projects.php";
+                  window.location.href = "update-projects.php";
                 }
               );
             },

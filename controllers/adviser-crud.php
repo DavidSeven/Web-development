@@ -77,4 +77,15 @@
     $databaseObject = null;
     return $adviserObjectsArray;
   }
+
+  function updateAdviser ($identifier, $name, $lastName)
+  {
+    $databaseObject = new Database ();
+    $connection = $databaseObject->connect ();
+    $query = $connection->prepare ('CALL spUpdateAdviser ('.$identifier.', "'.$name.'", "'.$lastName.'")');
+    $query->execute ();
+    $query->closeCursor ();
+    $connection = null;
+    $databaseObject = null;
+  }
 ?>

@@ -43,18 +43,49 @@
     $query = $connection->prepare ($sql);
     $query->execute ();
     $result = $query->fetchAll ();
-    $adviserObjectsArray = null;
+    $authorObjectsArray = null;
     $i = 0;
 
     foreach ($result as $key => $value)
     {
-      $adviserObjectsArray [$i] = new Author ($value ['identifier'], $value ['name'], $value ['lastName']);
+      $authorObjectsArray [$i] = new Author ($value ['identifier'], $value ['name'], $value ['lastName']);
       $i ++;
     }
 
     $query->closeCursor ();
     $connection = null;
     $databaseObject = null;
-    return $adviserObjectsArray;
+    return $authorObjectsArray;
+  }
+
+  function readSpecificAuthorByIdentifier ($identifier)
+  {
+    $databaseObject = new Database ();
+    $connection = $databaseObject->connect ();
+    $query = $connection->prepare ('CALL spGetAuthorByIdentifier ('.$identifier.')');
+    $query->execute ();
+    $result = $query->fetchAll ();
+    $authorObject = null;
+
+    foreach ($result as $key => $value)
+    {
+      $authorObject = new Author ($identifier, $value ['name'], $value ['lastName']);
+    }
+
+    $query->closeCursor ();
+    $connection = null;
+    $databaseObject = null;
+    return $authorObject;
+  }
+
+  function updateAuthor ($identifier, $name, $lastName)
+  {
+    $databaseObject = new Database ();
+    $connection = $databaseObject->connect ();
+    $query = $connection->prepare ('CALL spUpdateAuthor ('.$identifier.', "'.$name.'", "'.$lastName.'")');
+    $query->execute ();
+    $query->closeCursor ();
+    $connection = null;
+    $databaseObject = null;
   }
 ?>
