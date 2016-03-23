@@ -133,8 +133,37 @@
     return $includesArray;
   }
 
-  function updateProject ()
-  {}
+  function updateProject ($identifier, $name, $calification, $addedDate, $adviserIdentifier, $investigationLine)
+  {
+    $databaseObject = new Database ();
+    $connection = $databaseObject->connect ();
+    $projectObject = new Project ($identifier, $name, $calification, $addedDate, 3, $adviserIdentifier, $investigationLine);
+
+    $query = $connection->prepare
+    (
+      'CALL spUpdateProject
+      (
+        '.$projectObject->getIdentifier ().', "'.$projectObject->getName ().'", '.$projectObject->getCalification ().', "'.$projectObject->getAddedDate ().'",
+        '.$projectObject->getQuota ().', '.$projectObject->getAdviserIdentifier ().', '.$projectObject->getInvestigationLineIdentifier ().'
+      )'
+    );
+
+    $query->execute ();
+    $query->closeCursor ();
+    $connection = null;
+    $databaseObject = null;
+  }
+
+  function deleteIncludesRelation ($identifier)
+  {
+    $databaseObject = new Database ();
+    $connection = $databaseObject->connect ();
+    $query = $connection->prepare ('CALL spDeleteIncludes ('.$identifier.')');
+    $query->execute ();
+    $query->closeCursor ();
+    $connection = null;
+    $databaseObject = null;
+  }
 
   function deleteProject ()
   {}

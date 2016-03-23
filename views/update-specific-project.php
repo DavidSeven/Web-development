@@ -27,6 +27,9 @@
     	        </tr>
     	        <tr>
     	           <td align = "left">Name:</td>
+                 <td id = "hidden-project-id">
+                   <input class = "form-control" type = "number" name = "identifier"/>
+                 </td>
     	           <td>
                    <input class = "form-control" type = "text" name = "name" placeholder = "Project name" required/>
                  </td>
@@ -70,18 +73,10 @@
                 <div class = "col-xs-12 col-sm-12 col-md-12 col-lg-12 form-label" id = "authors-label">
                   <label>Authors:</label>
                 </div>
-                <!--<div class = "col-xs-12 col-sm-12 col-md-12 col-lg-12 div-select">
-                  <select class = "form-control" multiple = "multiple" name = "author-1">
+                <div class = "col-xs-12 col-sm-12 col-md-12 col-lg-12 div-select">
+                  <select class = "form-control" multiple = "multiple" name = "authors[]" id = "authorsSelect">
                   </select>
                 </div>
-                <div class = "col-xs-12 col-sm-12 col-md-12 col-lg-12 div-select">
-                  <select class = "form-control" multiple = "multiple" name = "author-2">
-                  </select>
-                </div>
-                <div class = "col-xs-12 col-sm-12 col-md-12 col-lg-12 div-select">
-                  <select class = "form-control" multiple = "multiple" name = "author-3">
-                  </select>
-                </div>-->
                 <div class = "col-xs-12 col-sm-12 col-md-12 col-lg-12 form-label" id = "advisers-label">
                   <label>Adviser:</label>
                 </div>

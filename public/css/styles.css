@@ -263,3 +263,8 @@ header h1
   border-radius: 7px;
   height: 250px;
 }
+
+#hidden-project-id
+{
+  display: none;
+}

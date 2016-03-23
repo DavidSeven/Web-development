@@ -30,6 +30,7 @@ $(document).ready
               $("form[name=add-project-form]") [0].reset ();
               var size = data [4].length;
               var investigationLineOptions = "";
+              $("input[name=identifier]").val (data [0][0].identifier);
               $("input[name=name]").val (data [0][0].name);
               $("input[name=addedDate]").val (data [0][0].addedDate);
               $("input[name=calification]").val (data [0][0].calification);
@@ -47,17 +48,8 @@ $(document).ready
               }
 
               $("select[name=investigationLine]").append (investigationLineOptions);
-              var authorFields = "";
-
-              for (var i = 1; i <= 3; i ++)
-              {
-                authorFields += "<div class = 'col-xs-12 col-sm-12 col-md-12 col-lg-12 div-select'>" +
-                                   "<select class = 'form-control' multiple = 'multiple' name = 'author-" + i + "'" +
-                                   "</select></div>";
-              }
-
-              $("#project-2 > .main").append (authorFields);
-              var authorOptions = "<option value = '0'>Choose an author</option>";
+              var authorOptions = "";
+              var adviserOptions = "";
               size = data [2].length;
               authorsSize = data [1].length;
               var check = false;
@@ -81,6 +73,23 @@ $(document).ready
                   authorOptions += "<option value = '" + data [2][i].identifier + "'>" + data [2][i].name + " " + data [2][i].lastName + "</option>"
                 }
               }
+
+              $("#authorsSelect").append (authorOptions);
+              size = data [3].length;
+
+              for (var i = 0; i < size; i ++)
+              {
+                if (data [0][0].adviserIdentifier == data [3][i].identifier)
+                {
+                  adviserOptions += "<option value = '" + data [3][i].identifier + "' selected>" + data [3][i].name + " " + data [3][i].lastName + "</option>";
+                }
+                else
+                {
+                  adviserOptions += "<option value = '" + data [3][i].identifier + "'>" + data [3][i].name + " " + data [3][i].lastName + "</option>";
+                }
+              }
+
+              $("select[name=advisers]").append (adviserOptions);
             },
 
             error: function (data)
@@ -102,7 +111,7 @@ $(document).ready
         console.log (data);
       }
     });
-    /*$("form[name=add-project-form]").submit
+    $("form[name=add-project-form]").submit
     (
       function (event)
       {
@@ -111,7 +120,7 @@ $(document).ready
           $.ajax
           ({
             type: "post",
-            url: "../controllers/add-project.php",
+            url: "../controllers/apply-project-update.php",
             data: $("form[name=add-project-form]").serialize (),
             encode: true,
             success: function (data)
@@ -119,12 +128,12 @@ $(document).ready
               console.log ("Package sent");
               console.log (data);
               $("form[name=add-project-form]") [0].reset ();
-              alert ("Project added.");
+              alert ("Project updated.");
               $(".container").slideUp
               (
                 500, function ()
                 {
-                  window.location.href = "../views/add-project.php";
+                  window.location.href = "../views/update-projects.php";
                 }
               );
             },
@@ -141,13 +150,6 @@ $(document).ready
               for(i = 0; i < 3; i ++)
               {
                 $("#authorsSelect").fadeTo ('slow', 0.1).fadeTo ('slow', 1.0);
-              }
-            }
-            if ($("select[name=advisers]").val () == 0)
-            {
-              for(i = 0; i < 3; i ++)
-              {
-                $("select[name=advisers]").fadeTo ('slow', 0.1).fadeTo ('slow', 1.0);
               }
             }
         }
@@ -203,6 +205,6 @@ $(document).ready
           }
         }
       }
-    );*/
+    );
   }
 );
