@@ -70,18 +70,18 @@
                 <div class = "col-xs-12 col-sm-12 col-md-12 col-lg-12 form-label" id = "authors-label">
                   <label>Authors:</label>
                 </div>
-                <div class = "col-xs-12 col-sm-12 col-md-12 col-lg-12 div-select">
-                  <select class = "form-control" multiple = "multiple" name = "author-1[]" id = "authorsSelect">
+                <!--<div class = "col-xs-12 col-sm-12 col-md-12 col-lg-12 div-select">
+                  <select class = "form-control" multiple = "multiple" name = "author-1">
                   </select>
                 </div>
                 <div class = "col-xs-12 col-sm-12 col-md-12 col-lg-12 div-select">
-                  <select class = "form-control" multiple = "multiple" name = "author-2[]" id = "authorsSelect">
+                  <select class = "form-control" multiple = "multiple" name = "author-2">
                   </select>
                 </div>
                 <div class = "col-xs-12 col-sm-12 col-md-12 col-lg-12 div-select">
-                  <select class = "form-control" multiple = "multiple" name = "author-3[]" id = "authorsSelect">
+                  <select class = "form-control" multiple = "multiple" name = "author-3">
                   </select>
-                </div>
+                </div>-->
                 <div class = "col-xs-12 col-sm-12 col-md-12 col-lg-12 form-label" id = "advisers-label">
                   <label>Adviser:</label>
                 </div>

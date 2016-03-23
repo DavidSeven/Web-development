@@ -28,9 +28,59 @@ $(document).ready
               console.log ("Package sent");
               console.log (data);
               $("form[name=add-project-form]") [0].reset ();
+              var size = data [4].length;
+              var investigationLineOptions = "";
+              $("input[name=name]").val (data [0][0].name);
+              $("input[name=addedDate]").val (data [0][0].addedDate);
+              $("input[name=calification]").val (data [0][0].calification);
 
-              var cadena = "project: " + data [0][0].name + "\ninclude: " + data [1][0].identifier + "\nauthor: " + data [2][0].name + "\nadviser: " + data [3][0].name + "\ninvestigation line: " + data [4][0].name;
-              alert (cadena);
+              for (var i = 0; i < size; i ++)
+              {
+                if (data [4][i].identifier == data [0][0].investigationLine)
+                {
+                  investigationLineOptions += "<option value = '" + data [4][i].identifier + "' selected>" + data [4][i].name + "</option>"
+                }
+                else
+                {
+                  investigationLineOptions += "<option value = '" + data [4][i].identifier + "'>" + data [4][i].name + "</option>"
+                }
+              }
+
+              $("select[name=investigationLine]").append (investigationLineOptions);
+              var authorFields = "";
+
+              for (var i = 1; i <= 3; i ++)
+              {
+                authorFields += "<div class = 'col-xs-12 col-sm-12 col-md-12 col-lg-12 div-select'>" +
+                                   "<select class = 'form-control' multiple = 'multiple' name = 'author-" + i + "'" +
+                                   "</select></div>";
+              }
+
+              $("#project-2 > .main").append (authorFields);
+              var authorOptions = "<option value = '0'>Choose an author</option>";
+              size = data [2].length;
+              authorsSize = data [1].length;
+              var check = false;
+
+              for (var i = 0; i < size; i ++)
+              {
+                check = false;
+
+                for (var j = 0; j < authorsSize; j++)
+                {
+                    if (data [2][i].identifier == data [1][j].identifier)
+                    {
+                      authorOptions += "<option value = '" + data [2][i].identifier + "' selected>" + data [2][i].name + " " + data [2][i].lastName + "</option>"
+                      check = true;
+                      break;
+                    }
+                }
+
+                if (!check)
+                {
+                  authorOptions += "<option value = '" + data [2][i].identifier + "'>" + data [2][i].name + " " + data [2][i].lastName + "</option>"
+                }
+              }
             },
 
             error: function (data)
