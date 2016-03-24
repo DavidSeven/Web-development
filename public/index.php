@@ -155,14 +155,14 @@
             </a>
           </div>
           <div class = "col-xs-12 col-sm-6 col-md-6 col-lg-3">
-            <a href = "../views/update-advisers.php">
+            <a href = "../views/delete-advisers.php">
               <div class = "circle-2 container-fluid" id = "link-to-adviser-delete">
                 <img src = "images/a.jpg" alt = "Crear">
               </div>
             </a>
           </div>
           <div class = "col-xs-12 col-sm-6 col-md-6 col-lg-3">
-            <a href = "../views/update-authors.php">
+            <a href = "../views/delete-authors.php">
               <div class = "circle-2 container-fluid" id = "link-to-author-delete">
                 <img src = "images/a.jpg" alt = "Crear">
               </div>

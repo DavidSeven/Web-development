@@ -165,11 +165,42 @@
     $databaseObject = null;
   }
 
+  function readProjectIdentifierByAuthorIdentifier ($identifier)
+  {
+    $databaseObject = new Database ();
+    $connection = $databaseObject->connect ();
+    $query = $connection->prepare ('CALL spGetProjectIdentifierByAuthorIdentifier ('.$identifier.')');
+    $query->execute ();
+    $result = $query->fetchAll ();
+    $projectIdentifier = null;
+
+    foreach ($result as $key => $value)
+    {
+      $projectIdentifier = $value ['projectIdentifier'];
+    }
+
+    $query->closeCursor ();
+    $connection = null;
+    $databaseObject = null;
+    return $projectIdentifier;
+  }
+
   function deleteProject ($identifier)
   {
     $databaseObject = new Database ();
     $connection = $databaseObject->connect ();
     $query = $connection->prepare ('CALL spDeleteProject ('.$identifier.')');
+    $query->execute ();
+    $query->closeCursor ();
+    $connection = null;
+    $databaseObject = null;
+  }
+
+  function increaseProjectQuota ($identifier)
+  {
+    $databaseObject = new Database ();
+    $connection = $databaseObject->connect ();
+    $query = $connection->prepare ('CALL spIncreaseProjectQuota ('.$identifier.')');
     $query->execute ();
     $query->closeCursor ();
     $connection = null;

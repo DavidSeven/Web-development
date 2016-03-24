@@ -88,4 +88,15 @@
     $connection = null;
     $databaseObject = null;
   }
+
+  function deleteAuthor ($identifier)
+  {
+    $databaseObject = new Database ();
+    $connection = $databaseObject->connect ();
+    $query = $connection->prepare ('CALL spDeleteAuthor ('.$identifier.')');
+    $query->execute ();
+    $query->closeCursor ();
+    $connection = null;
+    $databaseObject = null;
+  }
 ?>

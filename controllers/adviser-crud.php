@@ -88,4 +88,15 @@
     $connection = null;
     $databaseObject = null;
   }
+
+  function deleteAdviser ($identifier)
+  {
+    $databaseObject = new Database ();
+    $connection = $databaseObject->connect ();
+    $query = $connection->prepare ('CALL spDeleteAdviser ('.$identifier.')');
+    $query->execute ();
+    $query->closeCursor ();
+    $connection = null;
+    $databaseObject = null;
+  }
 ?>
