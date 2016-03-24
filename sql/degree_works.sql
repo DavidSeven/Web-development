@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 16, 2016 at 07:06 PM
+-- Generation Time: Mar 24, 2016 at 07:14 AM
 -- Server version: 10.1.9-MariaDB
 -- PHP Version: 5.5.30
 
@@ -24,6 +24,21 @@ DELIMITER $$
 --
 -- Procedures
 --
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spDeleteAdviser` (IN `spIdentifier` INT UNSIGNED)  NO SQL
+delete from adviser where identifier = spIdentifier$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spDeleteAuthor` (IN `spIdentifier` INT UNSIGNED)  NO SQL
+delete from author where identifier = spIdentifier$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spDeleteIncludes` (IN `spIdentifier` INT UNSIGNED)  NO SQL
+delete from includes where projectIdentifier = spIdentifier$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spDeleteInvestigationLine` (IN `spIdentifier` INT UNSIGNED)  NO SQL
+delete from investigationLine where identifier = spIdentifier$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spDeleteProject` (IN `spIdentifier` INT UNSIGNED)  NO SQL
+delete from project where identifier = spIdentifier$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `spGetAdviserByIdentifier` (IN `spIdentifier` VARCHAR(20))  NO SQL
 select name, lastName from adviser where identifier = spIdentifier$$
 
@@ -33,11 +48,17 @@ select * from adviser$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `spGetAllAuthors` ()  NO SQL
 select * from author$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spGetAllIncludes` ()  NO SQL
+select * from includes$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `spGetAllInvestigationLines` ()  NO SQL
 select * from investigationLine$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `spGetAllProjects` ()  NO SQL
 select * from project$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spGetAuthorByIdentifier` (IN `spIdentifier` INT UNSIGNED)  NO SQL
+select name, lastName from author where identifier = spIdentifier$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `spGetInvestigationLineByIdentifier` (IN `spIdentifier` INT UNSIGNED)  NO SQL
 select name from investigationLine where identifier = spIdentifier$$
@@ -47,6 +68,12 @@ select identifier from investigationLine where name = spName$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `spGetProjectByName` (IN `spName` VARCHAR(100))  NO SQL
 select identifier, calification, addedDate, quota, adviserIdentifier, investigationLineIdentifier from project where name = spName$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spGetProjectIdentifierByAuthorIdentifier` (IN `spIdentifier` INT UNSIGNED)  NO SQL
+select projectIdentifier from includes where authorIdentifier = spIdentifier$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spIncreaseProjectQuota` (IN `spIdentifier` INT UNSIGNED)  NO SQL
+update project set quota = (quota + 1) where identifier = spIdentifier$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `spSetAdviser` (IN `spName` VARCHAR(20), IN `spLastName` VARCHAR(20))  NO SQL
 insert into adviser (name, lastName) values (spName, spLastName)$$
@@ -62,6 +89,18 @@ insert into investigationLine (name) values (spName)$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `spSetProject` (IN `spName` VARCHAR(100), IN `spCalification` INT(1) UNSIGNED, IN `spAddedDate` DATE, IN `spAdviserIdentifier` INT UNSIGNED, IN `spInvestigationLineIdentifier` INT UNSIGNED)  NO SQL
 insert into project (name, calification, addedDate, adviserIdentifier, investigationLineIdentifier) values (spName, spCalification, spAddedDate, spAdviserIdentifier, spInvestigationLineIdentifier)$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spUpdateAdviser` (IN `spIdentifier` INT UNSIGNED, IN `spName` VARCHAR(20), IN `spLastName` VARCHAR(20))  NO SQL
+update adviser set name = spName, lastName = spLastName where identifier = spIdentifier$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spUpdateAuthor` (IN `spIdentifier` INT UNSIGNED, IN `spName` VARCHAR(20), IN `spLastName` VARCHAR(20))  NO SQL
+update author set name = spName, lastName = spLastName where identifier = spIdentifier$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spUpdateInvestigationLine` (IN `spIdentifier` INT UNSIGNED, IN `spName` VARCHAR(200))  NO SQL
+update investigationLine set name = spName where identifier = spIdentifier$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spUpdateProject` (IN `spIdentifier` INT UNSIGNED, IN `spName` VARCHAR(100), IN `spCalification` INT(1) UNSIGNED, IN `spAddedDate` DATE, IN `spQuota` INT(1) UNSIGNED, IN `spAdviserIdentifier` INT UNSIGNED, IN `spInvestigationLineIdentifier` INT UNSIGNED)  NO SQL
+update project set name = spName, calification = spCalification, addedDate = spAddedDate, quota = spQuota, adviserIdentifier = spAdviserIdentifier, investigationLineIdentifier = spInvestigationLineIdentifier where identifier = spIdentifier$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `spUpdateQuotaProject` (IN `spIdentifier` INT(11) UNSIGNED)  NO SQL
 update project set quota = (quota - 1) where identifier = spIdentifier$$
@@ -109,10 +148,8 @@ CREATE TABLE `author` (
 
 INSERT INTO `author` (`identifier`, `name`, `lastName`) VALUES
 (1, 'Jose David', 'Garcia Rodriguez'),
-(2, 'Mario Alberto', 'Anaya Diaz'),
-(3, 'Santiago Ernesto', 'Bedoya Conde'),
 (4, 'Moises David', 'Lopez Suarez'),
-(5, 'Carlos Alberto', 'Gomez Pajaro');
+(5, 'Carlos Daniel', 'Gomez Pajaro');
 
 -- --------------------------------------------------------
 
@@ -132,18 +169,7 @@ CREATE TABLE `includes` (
 INSERT INTO `includes` (`authorIdentifier`, `projectIdentifier`) VALUES
 (1, 3),
 (1, 4),
-(2, 3),
-(2, 6),
-(3, 3),
-(3, 5),
-(3, 6),
-(3, 7),
-(4, 5),
-(4, 6),
-(4, 7),
-(5, 4),
-(5, 5),
-(5, 7);
+(5, 4);
 
 -- --------------------------------------------------------
 
@@ -164,12 +190,10 @@ INSERT INTO `investigationLine` (`identifier`, `name`) VALUES
 (15, 'Big data'),
 (11, 'Machine learning'),
 (16, 'Professional design'),
-(9, 'Programming I'),
 (10, 'Programming II'),
 (14, 'Software architecture'),
 (13, 'Software engineering'),
-(12, 'Telematics'),
-(17, 'Web development');
+(12, 'Telematics');
 
 -- --------------------------------------------------------
 
@@ -192,11 +216,21 @@ CREATE TABLE `project` (
 --
 
 INSERT INTO `project` (`identifier`, `name`, `calification`, `addedDate`, `quota`, `adviserIdentifier`, `investigationLineIdentifier`) VALUES
-(3, 'Logistic regression', 4, '2016-03-23', 0, 3, 11),
-(4, 'Information retrieval', 5, '2015-11-18', 1, 4, 15),
-(5, 'Objects array', 3, '2015-06-08', 0, 5, 9),
-(6, 'Bidimensionals array', 2, '2014-12-02', 0, 2, 9),
-(7, 'Optimal path', 5, '2015-11-09', 0, 1, 12);
+(3, 'Logistic regression', 4, '2016-03-23', 2, 3, 11),
+(4, 'Information retrieval', 5, '2015-11-18', 1, 4, 15);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE `user` (
+  `identifier` int(11) NOT NULL,
+  `nickname` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `type` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Indexes for dumped tables
@@ -238,6 +272,12 @@ ALTER TABLE `project`
   ADD KEY `investigationLineIdentifier` (`investigationLineIdentifier`);
 
 --
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`identifier`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -255,12 +295,17 @@ ALTER TABLE `author`
 -- AUTO_INCREMENT for table `investigationLine`
 --
 ALTER TABLE `investigationLine`
-  MODIFY `identifier` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `identifier` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT for table `project`
 --
 ALTER TABLE `project`
-  MODIFY `identifier` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `identifier` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `identifier` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- Constraints for dumped tables
 --
