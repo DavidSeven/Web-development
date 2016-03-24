@@ -165,6 +165,14 @@
     $databaseObject = null;
   }
 
-  function deleteProject ()
-  {}
+  function deleteProject ($identifier)
+  {
+    $databaseObject = new Database ();
+    $connection = $databaseObject->connect ();
+    $query = $connection->prepare ('CALL spDeleteProject ('.$identifier.')');
+    $query->execute ();
+    $query->closeCursor ();
+    $connection = null;
+    $databaseObject = null;
+  }
 ?>

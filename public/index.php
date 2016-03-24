@@ -145,5 +145,37 @@
           </div>
         </section>
       </div>
+      <div class = "container" id = "container-delete">
+        <section class = "main row-fluid">
+          <div class = "col-xs-12 col-sm-6 col-md-6 col-lg-3">
+            <a href = "../views/delete-projects.php">
+              <div class = "circle-2 container-fluid" id = "link-to-project-delete">
+                <img src = "images/p.jpg" alt = "Crear">
+              </div>
+            </a>
+          </div>
+          <div class = "col-xs-12 col-sm-6 col-md-6 col-lg-3">
+            <a href = "../views/update-advisers.php">
+              <div class = "circle-2 container-fluid" id = "link-to-adviser-delete">
+                <img src = "images/a.jpg" alt = "Crear">
+              </div>
+            </a>
+          </div>
+          <div class = "col-xs-12 col-sm-6 col-md-6 col-lg-3">
+            <a href = "../views/update-authors.php">
+              <div class = "circle-2 container-fluid" id = "link-to-author-delete">
+                <img src = "images/a.jpg" alt = "Crear">
+              </div>
+            </a>
+          </div>
+          <div class = "col-xs-12 col-sm-6 col-md-6 col-lg-3">
+            <a href = "../views/update-investigation-lines.php">
+              <div class = "circle-2 container-fluid" id = "link-to-investigation-line-delete">
+                <img src = "images/l.jpg" alt = "Crear">
+              </div>
+            </a>
+          </div>
+        </section>
+      </div>
   </body>
 </html>

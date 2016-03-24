@@ -229,14 +229,15 @@ header h1
   height: 38px;
 }
 
-#container-create, #container-read, #container-update
+#container-create, #container-read, #container-update, #container-delete
 {
   display: none;
 }
 
 #link-to-project-create, #link-to-adviser-create, #link-to-author-create, #link-to-investigation-line-create,
 #link-to-project-read, #link-to-adviser-read, #link-to-author-read, #link-to-investigation-line-read,
-#link-to-project-update, #link-to-adviser-update, #link-to-author-update, #link-to-investigation-line-update
+#link-to-project-update, #link-to-adviser-update, #link-to-author-update, #link-to-investigation-line-update,
+#link-to-project-delete, #link-to-adviser-delete, #link-to-author-delete, #link-to-investigation-line-delete
 {
   display: none;
   -webkit-transition: transform 1s;
@@ -245,7 +246,8 @@ header h1
 
 #link-to-project-create:hover, #link-to-adviser-create:hover, #link-to-author-create:hover, #link-to-investigation-line-create:hover,
 #link-to-project-read:hover, #link-to-adviser-read:hover, #link-to-author-read:hover, #link-to-investigation-line-read:hover,
-#link-to-project-update:hover, #link-to-adviser-update:hover, #link-to-author-update:hover, #link-to-investigation-line-update:hover
+#link-to-project-update:hover, #link-to-adviser-update:hover, #link-to-author-update:hover, #link-to-investigation-line-update:hover,
+#link-to-project-delete:hover, #link-to-adviser-delete:hover, #link-to-author-delete:hover, #link-to-investigation-line-delete:hover
 {
   transform: translate(5%, 10%);
 }
@@ -267,4 +269,30 @@ header h1
 #hidden-project-id
 {
   display: none;
+}
+
+#confirmation-message
+{
+  height: 150px;
+  position: absolute;
+  top: 40%;
+  left: 35%;
+  background-color: rgb(254, 44, 44);
+  padding: 20px;
+  border-radius: 10px;
+  min-width: 400px;
+  display: none;
+};
+
+#main-div
+{
+  height: 100%;
+}
+
+#internal-div
+{
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  text-shadow: 0px 2px 5px rgb(246, 7, 7);
 }

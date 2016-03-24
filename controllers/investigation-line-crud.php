@@ -77,4 +77,15 @@
     $databaseObject = null;
     return $investigationLineObjectsArray;
   }
+
+  function updateInvestigationLine ($identifier, $name)
+  {
+    $databaseObject = new Database ();
+    $connection = $databaseObject->connect ();
+    $query = $connection->prepare ('CALL spUpdateInvestigationLine ('.$identifier.', "'.$name.'")');
+    $query->execute ();
+    $query->closeCursor ();
+    $connection = null;
+    $databaseObject = null;
+  }
 ?>

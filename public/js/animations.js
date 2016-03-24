@@ -5,6 +5,7 @@ $(document).ready
     var menuCreateState = false;
     var menuReadState = false;
     var menuUpdateState = false;
+    var menuDeleteState = false;
 
     $("#create").click
     (
@@ -29,6 +30,15 @@ $(document).ready
             $("#link-to-investigation-line-update").css ("display", "none");
             $("#container-update").css ("display", "none");
             menuUpdateState = false;
+          }
+          else if (menuDeleteState)
+          {
+            $("#link-to-project-delete").css ("display", "none");
+            $("#link-to-adviser-delete").css ("display", "none");
+            $("#link-to-author-delete").css ("display", "none");
+            $("#link-to-investigation-line-delete").css ("display", "none");
+            $("#container-delete").css ("display", "none");
+            menuDeleteState = false;
           }
 
           $("#h1-title").fadeOut
@@ -79,16 +89,11 @@ $(document).ready
         }
         else
         {
-          $("#container-create").fadeOut
-          (
-            300, function ()
-            {
-                $("#link-to-project-create").css ("display", "none");
-                $("#link-to-adviser-create").css ("display", "none");
-                $("#link-to-author-create").css ("display", "none");
-                $("#link-to-investigation-line-create").css ("display", "none");
-            }
-          );
+          $("#link-to-project-create").css ("display", "none");
+          $("#link-to-adviser-create").css ("display", "none");
+          $("#link-to-author-create").css ("display", "none");
+          $("#link-to-investigation-line-create").css ("display", "none");
+          $("#container-create").css ("display", "none");
 
           $("#h1-title").fadeOut
           (
@@ -127,6 +132,15 @@ $(document).ready
             $("#link-to-investigation-line-update").css ("display", "none");
             $("#container-update").css ("display", "none");
             menuUpdateState = false;
+          }
+          else if (menuDeleteState)
+          {
+            $("#link-to-project-delete").css ("display", "none");
+            $("#link-to-adviser-delete").css ("display", "none");
+            $("#link-to-author-delete").css ("display", "none");
+            $("#link-to-investigation-line-delete").css ("display", "none");
+            $("#container-delete").css ("display", "none");
+            menuDeleteState = false;
           }
 
           $("#h1-title").fadeOut
@@ -177,16 +191,11 @@ $(document).ready
         }
         else
         {
-          $("#container-read").fadeOut
-          (
-            300, function ()
-            {
-                $("#link-to-project-read").css ("display", "none");
-                $("#link-to-adviser-read").css ("display", "none");
-                $("#link-to-author-read").css ("display", "none");
-                $("#link-to-investigation-line-read").css ("display", "none");
-            }
-          );
+          $("#link-to-project-read").css ("display", "none");
+          $("#link-to-adviser-read").css ("display", "none");
+          $("#link-to-author-read").css ("display", "none");
+          $("#link-to-investigation-line-read").css ("display", "none");
+          $("#container-read").css ("display", "none");
 
           $("#h1-title").fadeOut
           (
@@ -225,6 +234,15 @@ $(document).ready
             $("#link-to-investigation-line-create").css ("display", "none");
             $("#container-create").css ("display", "none");
             menuCreateState = false;
+          }
+          else if (menuDeleteState)
+          {
+            $("#link-to-project-delete").css ("display", "none");
+            $("#link-to-adviser-delete").css ("display", "none");
+            $("#link-to-author-delete").css ("display", "none");
+            $("#link-to-investigation-line-delete").css ("display", "none");
+            $("#container-delete").css ("display", "none");
+            menuDeleteState = false;
           }
 
           $("#h1-title").fadeOut
@@ -275,16 +293,11 @@ $(document).ready
         }
         else
         {
-          $("#container-update").fadeOut
-          (
-            300, function ()
-            {
-                $("#link-to-project-update").css ("display", "none");
-                $("#link-to-adviser-update").css ("display", "none");
-                $("#link-to-author-update").css ("display", "none");
-                $("#link-to-investigation-line-update").css ("display", "none");
-            }
-          );
+          $("#link-to-project-update").css ("display", "none");
+          $("#link-to-adviser-update").css ("display", "none");
+          $("#link-to-author-update").css ("display", "none");
+          $("#link-to-investigation-line-update").css ("display", "none");
+          $("#container-update").css ("display", "none");
 
           $("#h1-title").fadeOut
           (
@@ -300,6 +313,107 @@ $(document).ready
       }
     );
 
+    $("#delete").click
+    (
+      function ()
+      {
+        if (!menuDeleteState)
+        {
+          if (menuReadState)
+          {
+            $("#link-to-project-read").css ("display", "none");
+            $("#link-to-adviser-read").css ("display", "none");
+            $("#link-to-author-read").css ("display", "none");
+            $("#link-to-investigation-line-read").css ("display", "none");
+            $("#container-read").css ("display", "none");
+            menuReadState = false;
+          }
+          else if (menuCreateState)
+          {
+            $("#link-to-project-create").css ("display", "none");
+            $("#link-to-adviser-create").css ("display", "none");
+            $("#link-to-author-create").css ("display", "none");
+            $("#link-to-investigation-line-create").css ("display", "none");
+            $("#container-create").css ("display", "none");
+            menuCreateState = false;
+          }
+          else if (menuUpdateState)
+          {
+            $("#link-to-project-update").css ("display", "none");
+            $("#link-to-adviser-update").css ("display", "none");
+            $("#link-to-author-update").css ("display", "none");
+            $("#link-to-investigation-line-update").css ("display", "none");
+            $("#container-update").css ("display", "none");
+            menuUpdateState = false;
+          }
+
+          $("#h1-title").fadeOut
+          (
+            200, function ()
+            {
+              $("#h1-title").html ("Menu delete");
+              $("#h1-title").fadeIn (200);
+            }
+          );
+
+          $("#container-delete").fadeIn
+          (
+            500, function ()
+            {
+              $("#link-to-investigation-line-delete").fadeIn
+              (
+                300, function ()
+                {
+                  $("#link-to-author-delete").fadeIn
+                  (
+                    300, function ()
+                    {
+                      $("#link-to-adviser-delete").fadeIn
+                      (
+                        300, function ()
+                        {
+                          $("#link-to-project-delete").fadeIn (300);
+                        }
+                      );
+                    }
+                  );
+                }
+              );
+            }
+          );
+
+          var scrollPosition = $("#container-delete").offset ().top;
+
+          $("html, body").animate
+          (
+            {
+              scrollTop: scrollPosition
+            }, 2000
+          );
+
+          menuDeleteState = true;
+        }
+        else
+        {
+          $("#link-to-project-delete").css ("display", "none");
+          $("#link-to-adviser-delete").css ("display", "none");
+          $("#link-to-author-delete").css ("display", "none");
+          $("#link-to-investigation-line-delete").css ("display", "none");
+          $("#container-delete").css ("display", "none");
+
+          $("#h1-title").fadeOut
+          (
+            200, function ()
+            {
+              $("#h1-title").html ("Degree works");
+              $("#h1-title").fadeIn (200);
+            }
+          );
+
+          menuDeleteState = false;
+        }
+      }
+    );
 
     $("header").css
     (
