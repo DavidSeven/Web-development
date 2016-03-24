@@ -26,8 +26,7 @@ $(document).ready
 
           success: function (data)
           {
-            console.log (data);
-            console.log ("Identifier: " + data.identifier);
+            console.log (data);        
             $("#confirmation-message").slideUp (300);
 
             $.ajax

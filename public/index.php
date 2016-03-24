@@ -169,7 +169,7 @@
             </a>
           </div>
           <div class = "col-xs-12 col-sm-6 col-md-6 col-lg-3">
-            <a href = "../views/update-investigation-lines.php">
+            <a href = "../views/delete-investigation-lines.php">
               <div class = "circle-2 container-fluid" id = "link-to-investigation-line-delete">
                 <img src = "images/l.jpg" alt = "Crear">
               </div>

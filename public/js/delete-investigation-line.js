@@ -4,6 +4,15 @@ $(document).ready
   {
     var id = null;
 
+    $("input[name=back-btn]").click
+    (
+      function (e)
+      {
+        $("#confirmation-message").slideUp (300);
+        console.log (e);
+      }
+    );
+
     $("input[name=delete-btn]").click
     (
       function (e)
@@ -11,7 +20,7 @@ $(document).ready
         $.ajax
         ({
           type: "post",
-          url: "../controllers/delete-project.php",
+          url: "../controllers/delete-investigation-line.php",
           data: {identifier: id},
           encode: true,
 
@@ -23,46 +32,34 @@ $(document).ready
             $.ajax
             ({
               type: "post",
-              url: "../controllers/read-all-projects.php",
+              url: "../controllers/read-all-investigation-lines.php",
               data: $("form[name=filter-form]").serialize (),
               encode: true,
 
               success: function (data)
               {
-                if (data != null)
-                {
-                  var size = data.length;
-                  $("form[name=filter-form]") [0].reset ();
-                  $(".rm").remove ();
-                  console.log ("Package sent");
-                  console.log ("Dataset:");
-                  console.log (data);
-                  var newRows = "";
-                  var tableTiles = "<tr id = 'table-titles' class = 'rm'><td>Identifier</td><td>Name</td><td>Investigation line</td><td>Calification</td><td>Added date</td><td>Adviser name</td><td>Quota</td><td>Option</td></tr>";
+                var size = data.length;
+                $("form[name=filter-form]") [0].reset ();
+                $(".rm").remove ();
+                console.log ("Package sent");
+                console.log ("Dataset:");
+                console.log (data);
+                var newRows = "";
+                var tableTiles = "<tr id = 'table-titles' class = 'rm'><td>Identifier</td><td>Name</td><td>Option</td></tr>";
 
-                  for (var i = 0; i < size; i ++)
-                  {
-                    newRows += "<tr class = 'rm'>";
-                    newRows += "<td>" + data [i].identifier + "</td>";
-                    newRows += "<td>" + data [i].name + "</td>";
-                    newRows += "<td>" + data [i].investigationLine + "</td>";
-                    newRows += "<td>" + data [i].calification + "</td>";
-                    newRows += "<td>" + data [i].addedDate + "</td>";
-                    newRows += "<td>" + data [i].adviserName + "</td>";
-                    newRows += "<td>" + data [i].quota + "</td>";
-                    newRows += "<td><a id = '" + data [i].identifier + "' href = '#'>Delete</a></td>";
-                    newRows += "</tr>";
-                  }
-
-                  $("#table-read").prepend (newRows);
-                  $(".rm").css ("display", "none");
-                  $(".rm").fadeIn (300);
-                  $("#table-read").prepend (tableTiles);
-                }
-                else
+                for (var i = 0; i < size; i ++)
                 {
-                  alert ("Nothing");
+                  newRows += "<tr class = 'rm'>";
+                  newRows += "<td>" + data [i].identifier + "</td>";
+                  newRows += "<td>" + data [i].name + "</td>";
+                  newRows += "<td><a id = '" + data [i].identifier + "' href = '#'>Delete</a></td>";
+                  newRows += "</tr>";
                 }
+
+                $("#table-read").prepend (newRows);
+                $(".rm").css ("display", "none");
+                $(".rm").fadeIn (300);
+                $("#table-read").prepend (tableTiles);
               },
 
               error: function (data)
@@ -75,18 +72,10 @@ $(document).ready
 
           error: function (data)
           {
+            console.log ("Package unsent");
             console.log (data);
           }
         });
-      }
-    );
-
-    $("input[name=back-btn]").click
-    (
-      function (e)
-      {
-        $("#confirmation-message").slideUp (300);
-        console.log (e);
       }
     );
 
@@ -107,7 +96,7 @@ $(document).ready
     $.ajax
     ({
       type: "post",
-      url: "../controllers/read-all-projects.php",
+      url: "../controllers/read-all-investigation-lines.php",
       data: $("form[name=filter-form]").serialize (),
       encode: true,
 
@@ -122,18 +111,13 @@ $(document).ready
           console.log ("Dataset:");
           console.log (data);
           var newRows = "";
-          var tableTiles = "<tr id = 'table-titles' class = 'rm'><td>Identifier</td><td>Name</td><td>Investigation line</td><td>Calification</td><td>Added date</td><td>Adviser name</td><td>Quota</td><td>Option</td></tr>";
+          var tableTiles = "<tr id = 'table-titles' class = 'rm'><td>Identifier</td><td>Name</td><td>Option</td></tr>";
 
           for (var i = 0; i < size; i ++)
           {
             newRows += "<tr class = 'rm'>";
             newRows += "<td>" + data [i].identifier + "</td>";
             newRows += "<td>" + data [i].name + "</td>";
-            newRows += "<td>" + data [i].investigationLine + "</td>";
-            newRows += "<td>" + data [i].calification + "</td>";
-            newRows += "<td>" + data [i].addedDate + "</td>";
-            newRows += "<td>" + data [i].adviserName + "</td>";
-            newRows += "<td>" + data [i].quota + "</td>";
             newRows += "<td><a id = '" + data [i].identifier + "' href = '#'>Delete</a></td>";
             newRows += "</tr>";
           }
@@ -202,13 +186,7 @@ $(document).ready
     (
       function ()
       {
-        if
-        (
-          ($("input[name=identifier]").val () == null || $("input[name=identifier]").val () == "") && ($("input[name=name]").val () == null || $("input[name=name]").val () == "") &&
-          $("select[name=investigationLine]").val () == 0 && ($("input[name=calification]").val () == null || $("input[name=calification]").val () == "") &&
-          ($("input[name=addedDate]").val () == null || $("input[name=addedDate]").val () == "") && ($("input[name=quota]").val () == null || $("input[name=quota]").val () == "") &&
-          ($("input[name=adviser-name]").val () == null || $("input[name=adviser-name]").val () == "")
-        )
+        if (($("input[name=identifier]").val () == null || $("input[name=identifier]").val () == "") && ($("input[name=name]").val () == null || $("input[name=name]").val () == ""))
         {
           alert ("All filters are empty.");
         }
@@ -217,9 +195,10 @@ $(document).ready
           $.ajax
           ({
             type: "post",
-            url: "../controllers/read-specific-project.php",
+            url: "../controllers/read-specific-investigation-line.php",
             data: $("form[name=filter-form]").serialize (),
             encode: true,
+
             success: function (data)
             {
               if (data != null)
@@ -231,18 +210,13 @@ $(document).ready
                 console.log ("Dataset:");
                 console.log (data);
                 var newRows = "";
-                var tableTiles = "<tr id = 'table-titles' class = 'rm'><td>Identifier</td><td>Name</td><td>Investigation line</td><td>Calification</td><td>Added date</td><td>Adviser name</td><td>Quota</td><td>Option</td></tr>";
+                var tableTiles = "<tr id = 'table-titles' class = 'rm'><td>Identifier</td><td>Name</td><td>Option</td></tr>";
 
                 for (var i = 0; i < size; i ++)
                 {
                   newRows += "<tr class = 'rm'>";
                   newRows += "<td>" + data [i].identifier + "</td>";
                   newRows += "<td>" + data [i].name + "</td>";
-                  newRows += "<td>" + data [i].investigationLine + "</td>";
-                  newRows += "<td>" + data [i].calification + "</td>";
-                  newRows += "<td>" + data [i].addedDate + "</td>";
-                  newRows += "<td>" + data [i].adviserName + "</td>";
-                  newRows += "<td>" + data [i].quota + "</td>";
                   newRows += "<td><a id = '" + data [i].identifier + "' href = '#'>Delete</a></td>";
                   newRows += "</tr>";
                 }
@@ -257,6 +231,7 @@ $(document).ready
                 alert ("Nothing");
               }
             },
+
             error: function (data)
             {
               console.log ("Package unsent");

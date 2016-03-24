@@ -88,4 +88,15 @@
     $connection = null;
     $databaseObject = null;
   }
+
+  function deleteInvestigationLine ($identifier)
+  {
+    $databaseObject = new Database ();
+    $connection = $databaseObject->connect ();
+    $query = $connection->prepare ('CALL spDeleteInvestigationLine ('.$identifier.')');
+    $query->execute ();
+    $query->closeCursor ();
+    $connection = null;
+    $databaseObject = null;
+  }
 ?>
