@@ -296,3 +296,30 @@ header h1
   text-align: center;
   text-shadow: 0px 2px 5px rgb(246, 7, 7);
 }
+
+#login-h4
+{
+  color: white;
+  display: block;
+  padding: 0%;
+  margin-bottom: 0%;
+  text-align: center;
+}
+
+#login-box
+{
+  background-color: white;
+  height: 350px;
+  padding: 30px;
+  border-radius: 5px;
+}
+
+.control-label
+{
+  color: rgb(47, 47, 47);
+}
+
+#login-body
+{
+  color: rgb(47, 47, 47);
+}
