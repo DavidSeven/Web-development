@@ -21,24 +21,31 @@
               <h4 id = "login-h4">Login</h4>
             </header>
           </div>
-          <div class = "col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3 row" id = "login-box">
+          <div class = "col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3 row-fluid" id = "login-box">
             <div class = "panel-body">
               <form role = "form" name = "login-form" class = "form-horizontal" id = "registration-form">
                 <div class = "form-group row">
-                  <label class = "control-label col-xs-12 col-sm-12 col-md-2 col-lg-2" for = "user">User:</label>
-                  <div class = "col-xs-12 col-sm-12 col-md-10 col-lg-10">
+                  <label class = "control-label col-xs-12 col-sm-12 col-md-3 col-lg-3" for = "user">User:</label>
+                  <div class = "col-xs-12 col-sm-12 col-md-9 col-lg-9">
                     <input type = "text" class = "form-control" id = "user" name = "user" placeholder = "Your user name"/>
                   </div>
                 </div>
                 <div class = "form-group row">
-                  <label class = "control-label col-xs-12 col-sm-12 col-md-2 col-lg-2" for = "password">Password:</label>
-                  <div class = "col-xs-12 col-sm-12 col-md-10 col-lg-10">
+                  <label class = "control-label col-xs-12 col-sm-12 col-md-3 col-lg-3" for = "password">Password:</label>
+                  <div class = "col-xs-12 col-sm-12 col-md-9 col-lg-9">
                     <input type = "password" class = "form-control" id = "password" name = "password" placeholder = "Your user password"/>
                   </div>
                 </div>
                 <div class = "form-group row">
-                  <div class = "col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-log-offset-2 block-center">
-                    <button type = "submit" class = "btn btn-success">Sign in</button>
+                  <div class = "col-xs-3 col-xs-offset-2 col-sm-2 col-sm-offset-2 col-md-2 col-md-offset-2 col-lg-2 col-lg-offset-2">
+                    <button type = "submit" class = "btn btn-success log-btn block-center">Sign in</button>
+                  </div>
+                  <div class = "col-xs-6 col-xs-offset-1 col-sm-2 col-sm-offset-4 col-md-2 col-md-offset-4 col-lg-2 col-lg-offset-4">
+                    <button type = "reset" class = "btn btn-warning log-btn block-center">Reset</button>
+                  </div>
+                </div>
+                <div class = "form-group row">
+                  <div class = "col-xs-12 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1" id = "line-form">
                   </div>
                 </div>
               </form>

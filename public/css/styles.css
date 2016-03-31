@@ -304,12 +304,13 @@ header h1
   padding: 0%;
   margin-bottom: 0%;
   text-align: center;
+  margin-bottom: -50px;
 }
 
 #login-box
 {
   background-color: white;
-  height: 350px;
+  height: 450px;
   padding: 30px;
   border-radius: 5px;
 }
@@ -317,9 +318,21 @@ header h1
 .control-label
 {
   color: rgb(47, 47, 47);
+  margin-top: 8px;
 }
 
 #login-body
 {
   color: rgb(47, 47, 47);
+}
+
+.log-btn
+{
+  width: 80px;
+}
+
+#line-form
+{
+  height: 1px;
+  background: rgb(107, 107, 107);
 }

@@ -447,5 +447,43 @@ $(document).ready
         );
       }
     );
+
+    $.ajax
+    ({
+      type: "post",
+      url: "../controllers/verify-login.php",
+      data: null,
+      encode: true,
+
+      success: function (data)
+      {
+        console.log ("Package sent");
+        console.log (data);
+        if (data != null)
+        {
+          if (data.type == 2)
+          {
+            $(".delete-link").attr ("href", "#");
+            $(".update-link").attr ("href", "#");
+          }
+          else if (data.type == 3)
+          {
+            $(".delete-link").attr ("href", "#");
+            $(".update-link").attr ("href", "#");
+            $(".create-link").attr ("href", "#");
+          }
+        }
+        else if (data == null)
+        {
+          window.location.href = "../public/index.php";
+        }
+      },
+
+      error: function (data)
+      {
+        console.log ("Package unsent");
+        console.log (data);
+      }
+    });
   }
 );

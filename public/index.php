@@ -52,28 +52,28 @@
       <div class = "container" id = "container-create">
         <section class = "main row-fluid">
           <div class = "col-xs-12 col-sm-6 col-md-6 col-lg-3">
-            <a href = "../views/add-project.php">
+            <a href = "../views/add-project.php" class = "create-link">
               <div class = "circle-2 container-fluid" id = "link-to-project-create">
                 <img src = "images/p.jpg" alt = "Crear">
               </div>
             </a>
           </div>
           <div class = "col-xs-12 col-sm-6 col-md-6 col-lg-3">
-            <a href = "../views/add-adviser.php">
+            <a href = "../views/add-adviser.php" class = "create-link">
               <div class = "circle-2 container-fluid" id = "link-to-adviser-create">
                 <img src = "images/a.jpg" alt = "Crear">
               </div>
             </a>
           </div>
           <div class = "col-xs-12 col-sm-6 col-md-6 col-lg-3">
-            <a href = "../views/add-author.php">
+            <a href = "../views/add-author.php" class = "create-link">
               <div class = "circle-2 container-fluid" id = "link-to-author-create">
                 <img src = "images/a.jpg" alt = "Crear">
               </div>
             </a>
           </div>
           <div class = "col-xs-12 col-sm-6 col-md-6 col-lg-3">
-            <a href = "../views/add-investigation-line.php">
+            <a href = "../views/add-investigation-line.php" class = "create-link">
               <div class = "circle-2 container-fluid" id = "link-to-investigation-line-create">
                 <img src = "images/l.jpg" alt = "Crear">
               </div>
@@ -84,28 +84,28 @@
       <div class = "container" id = "container-read">
         <section class = "main row-fluid">
           <div class = "col-xs-12 col-sm-6 col-md-6 col-lg-3">
-            <a href = "../views/read-projects.php">
+            <a href = "../views/read-projects.php" class = "read-link">
               <div class = "circle-2 container-fluid" id = "link-to-project-read">
                 <img src = "images/p.jpg" alt = "Crear">
               </div>
             </a>
           </div>
           <div class = "col-xs-12 col-sm-6 col-md-6 col-lg-3">
-            <a href = "../views/read-advisers.php">
+            <a href = "../views/read-advisers.php" class = "read-link">
               <div class = "circle-2 container-fluid" id = "link-to-adviser-read">
                 <img src = "images/a.jpg" alt = "Crear">
               </div>
             </a>
           </div>
           <div class = "col-xs-12 col-sm-6 col-md-6 col-lg-3">
-            <a href = "../views/read-authors.php">
+            <a href = "../views/read-authors.php" class = "read-link">
               <div class = "circle-2 container-fluid" id = "link-to-author-read">
                 <img src = "images/a.jpg" alt = "Crear">
               </div>
             </a>
           </div>
           <div class = "col-xs-12 col-sm-6 col-md-6 col-lg-3">
-            <a href = "../views/read-investigation-lines.php">
+            <a href = "../views/read-investigation-lines.php" class = "read-link">
               <div class = "circle-2 container-fluid" id = "link-to-investigation-line-read">
                 <img src = "images/l.jpg" alt = "Crear">
               </div>
@@ -116,28 +116,28 @@
       <div class = "container" id = "container-update">
         <section class = "main row-fluid">
           <div class = "col-xs-12 col-sm-6 col-md-6 col-lg-3">
-            <a href = "../views/update-projects.php">
+            <a href = "../views/update-projects.php" class = "update-link">
               <div class = "circle-2 container-fluid" id = "link-to-project-update">
                 <img src = "images/p.jpg" alt = "Crear">
               </div>
             </a>
           </div>
           <div class = "col-xs-12 col-sm-6 col-md-6 col-lg-3">
-            <a href = "../views/update-advisers.php">
+            <a href = "../views/update-advisers.php" class = "update-link">
               <div class = "circle-2 container-fluid" id = "link-to-adviser-update">
                 <img src = "images/a.jpg" alt = "Crear">
               </div>
             </a>
           </div>
           <div class = "col-xs-12 col-sm-6 col-md-6 col-lg-3">
-            <a href = "../views/update-authors.php">
+            <a href = "../views/update-authors.php" class = "update-link">
               <div class = "circle-2 container-fluid" id = "link-to-author-update">
                 <img src = "images/a.jpg" alt = "Crear">
               </div>
             </a>
           </div>
           <div class = "col-xs-12 col-sm-6 col-md-6 col-lg-3">
-            <a href = "../views/update-investigation-lines.php">
+            <a href = "../views/update-investigation-lines.php" class = "update-link">
               <div class = "circle-2 container-fluid" id = "link-to-investigation-line-update">
                 <img src = "images/l.jpg" alt = "Crear">
               </div>
@@ -148,28 +148,28 @@
       <div class = "container" id = "container-delete">
         <section class = "main row-fluid">
           <div class = "col-xs-12 col-sm-6 col-md-6 col-lg-3">
-            <a href = "../views/delete-projects.php">
+            <a href = "../views/delete-projects.php" class = "delete-link">
               <div class = "circle-2 container-fluid" id = "link-to-project-delete">
                 <img src = "images/p.jpg" alt = "Crear">
               </div>
             </a>
           </div>
           <div class = "col-xs-12 col-sm-6 col-md-6 col-lg-3">
-            <a href = "../views/delete-advisers.php">
+            <a href = "../views/delete-advisers.php" class = "delete-link">
               <div class = "circle-2 container-fluid" id = "link-to-adviser-delete">
                 <img src = "images/a.jpg" alt = "Crear">
               </div>
             </a>
           </div>
           <div class = "col-xs-12 col-sm-6 col-md-6 col-lg-3">
-            <a href = "../views/delete-authors.php">
+            <a href = "../views/delete-authors.php" class = "delete-link">
               <div class = "circle-2 container-fluid" id = "link-to-author-delete">
                 <img src = "images/a.jpg" alt = "Crear">
               </div>
             </a>
           </div>
           <div class = "col-xs-12 col-sm-6 col-md-6 col-lg-3">
-            <a href = "../views/delete-investigation-lines.php">
+            <a href = "../views/delete-investigation-lines.php" class = "delete-link">
               <div class = "circle-2 container-fluid" id = "link-to-investigation-line-delete">
                 <img src = "images/l.jpg" alt = "Crear">
               </div>
