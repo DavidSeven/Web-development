@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 24, 2016 at 07:14 AM
+-- Generation Time: Apr 04, 2016 at 12:26 AM
 -- Server version: 10.1.9-MariaDB
 -- PHP Version: 5.5.30
 
@@ -72,6 +72,9 @@ select identifier, calification, addedDate, quota, adviserIdentifier, investigat
 CREATE DEFINER=`root`@`localhost` PROCEDURE `spGetProjectIdentifierByAuthorIdentifier` (IN `spIdentifier` INT UNSIGNED)  NO SQL
 select projectIdentifier from includes where authorIdentifier = spIdentifier$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spGetUserByNickname` (IN `spNickname` VARCHAR(10))  NO SQL
+select password, type from user where nickname = spNickname$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `spIncreaseProjectQuota` (IN `spIdentifier` INT UNSIGNED)  NO SQL
 update project set quota = (quota + 1) where identifier = spIdentifier$$
 
@@ -89,6 +92,9 @@ insert into investigationLine (name) values (spName)$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `spSetProject` (IN `spName` VARCHAR(100), IN `spCalification` INT(1) UNSIGNED, IN `spAddedDate` DATE, IN `spAdviserIdentifier` INT UNSIGNED, IN `spInvestigationLineIdentifier` INT UNSIGNED)  NO SQL
 insert into project (name, calification, addedDate, adviserIdentifier, investigationLineIdentifier) values (spName, spCalification, spAddedDate, spAdviserIdentifier, spInvestigationLineIdentifier)$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spSetUser` (IN `spNickname` VARCHAR(10), IN `spPassword` VARCHAR(100), IN `spType` INT(1) UNSIGNED)  NO SQL
+insert into user (nickname, password, type) values (spNickname, spPassword, spType)$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `spUpdateAdviser` (IN `spIdentifier` INT UNSIGNED, IN `spName` VARCHAR(20), IN `spLastName` VARCHAR(20))  NO SQL
 update adviser set name = spName, lastName = spLastName where identifier = spIdentifier$$
@@ -227,10 +233,19 @@ INSERT INTO `project` (`identifier`, `name`, `calification`, `addedDate`, `quota
 
 CREATE TABLE `user` (
   `identifier` int(11) NOT NULL,
-  `nickname` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `password` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `nickname` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `type` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`identifier`, `nickname`, `password`, `type`) VALUES
+(17, 'davidweb', '$2a$15$TBl8LVVdu1GUXqpWSRLDNuMwnFUYgp/NHVa.ZDI84OhgXWRGU6yri', 1),
+(18, 'davidweb2', '$2a$15$3iuBgI4em58sLR5wW8PUG.QgF2ilAhDl.erKTNu3grlhV9i7u4mTe', 2),
+(19, 'davidweb3', '$2a$15$9DQkW11w0vnlKW0BqvajO.V38PgrAivYEcrhomXF6.ty5eEjyHTLG', 3);
 
 --
 -- Indexes for dumped tables
@@ -275,7 +290,8 @@ ALTER TABLE `project`
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`identifier`);
+  ADD PRIMARY KEY (`identifier`),
+  ADD UNIQUE KEY `nickname` (`nickname`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -295,17 +311,17 @@ ALTER TABLE `author`
 -- AUTO_INCREMENT for table `investigationLine`
 --
 ALTER TABLE `investigationLine`
-  MODIFY `identifier` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `identifier` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT for table `project`
 --
 ALTER TABLE `project`
-  MODIFY `identifier` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `identifier` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `identifier` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `identifier` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- Constraints for dumped tables
 --
